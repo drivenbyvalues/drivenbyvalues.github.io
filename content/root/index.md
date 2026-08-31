@@ -11,7 +11,7 @@ title: Harish Raghavendra - Platform Product Manager, GitHub
             </div>
         </div>
         <div class="hero-body">
-            <p class="hero-kicker">Platform Product Manager · GitHub · Starting Aug 25, 2026</p>
+            <p class="hero-kicker">Platform Product Manager · GitHub · Starting August 2026</p>
             <h1 class="hero-title">Building trustworthy, AI-native developer platforms that scale globally</h1>
             <p class="hero-lede">
                 20+ years designing high-impact platforms, guiding governance policy, and mentoring distributed teams
@@ -123,7 +123,7 @@ title: Harish Raghavendra - Platform Product Manager, GitHub
         </div>
         <div class="company">GitHub</div>
         <ul>
-            <li>Starting August 25, 2026 — bringing seven years of self-service, AI-native platform experience from Visa to developer tooling at GitHub scale.</li>
+            <li>Starting August 2026 — bringing seven years of self-service, AI-native platform experience from Visa to developer tooling at GitHub scale.</li>
             <li><strong>What I'm bringing forward:</strong> self-service platform thinking (Parsec), scaling foundational infrastructure with trust and audit-readiness (Tusker), and recent, direct experience shipping an AI-native product with several dozen agents (ViDA.AI) — where automation and human judgment need to compose, not compete.</li>
             <li><strong>Early focus areas:</strong> getting deep on GitHub's platform surface area, understanding a builder community at a scale no internal enterprise platform ever exposed me to, and bringing a governance-and-trust lens to platform decisions without slowing builders down.</li>
         </ul>

@@ -8,7 +8,7 @@ nav_order: 7
 
 ## Platform Product Manager
 **GitHub**
-*Starting August 25, 2026*
+*Starting August 2026*
 
 After seven years building data, AI, and governance platforms at Visa, I'm starting a new chapter as a **Platform Product Manager at GitHub** — one week off in between to reset, then straight into it.
 

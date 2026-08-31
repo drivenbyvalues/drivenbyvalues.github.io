@@ -44,7 +44,7 @@ title: Professional Timeline | Harish Raghavendra
           <span class="domain-badge badge--ai"><i class="fas fa-brain"></i> AI</span>
         </div>
         <h2>Current Chapter</h2>
-        <h3>Platform Product Manager, GitHub — starting August 25, 2026</h3>
+        <h3>Platform Product Manager, GitHub — starting August 2026</h3>
         <p>After seven years building data, AI, and governance platforms at Visa, I'm bringing that same self-service, AI-native platform mindset to GitHub. <a href="/2026-present/">Read more →</a></p>
       </div>
 
