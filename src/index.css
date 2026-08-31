@@ -1,4 +1,5 @@
 @import url('/assets/css/resume.css');
+@import url('/assets/css/future-theme.css');
 
 :root {
   color-scheme: light;
@@ -10,6 +11,24 @@ html {
 
 body {
   min-width: 320px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.hero,
+.main-nav,
+.nav-container,
+.highlight-card,
+.skill-card,
+.skill-column,
+.experience-item,
+.education-item,
+.metric-card,
+.contact-chip,
+.chip,
+.year-hero,
+.year-pillar-card,
+.btn {
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.4s ease;
 }
 
 button,

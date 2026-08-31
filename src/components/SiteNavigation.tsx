@@ -25,10 +25,13 @@ export function SiteNavigation({ currentPath }: { currentPath: string }) {
         </a>
         <div className={`nav-links ${open ? 'active' : ''}`} id="primary-navigation">
           {navItems.map(([label, href, icon]) => {
+            const hasHash = href.includes('#')
             const itemPath = normalizePath(href.split('#')[0])
-            const active = itemPath === '/'
-              ? currentPath === '/'
-              : currentPath === itemPath || currentPath.startsWith(itemPath)
+            const active = hasHash
+              ? false
+              : itemPath === '/'
+                ? currentPath === '/'
+                : currentPath === itemPath || currentPath.startsWith(itemPath)
             return (
               <a key={label} href={href} className={active ? 'active' : ''} onClick={() => setOpen(false)}>
                 <i className={icon} aria-hidden="true" /> {label}
