@@ -20,8 +20,8 @@ title: Harish Raghavendra - Staff Product Manager, Data Platform, GitHub
                 Governance at Visa (2019–2026).
             </p>
             <div class="hero-cta">
-                <a class="btn btn-primary" href="{{ '/resumes/Harish.Raghavendra.04.2026.pdf' | relative_url }}" target="_blank" rel="noopener">
-                    <i class="fas fa-file-download"></i> Download Resume (Apr 2026)
+                <a class="btn btn-primary" href="{{ '/resumes/Harish.Raghavendra.08.2026.pdf' | relative_url }}" target="_blank" rel="noopener">
+                    <i class="fas fa-file-download"></i> Download Resume (Aug 2026)
                 </a>
                 <a class="btn btn-secondary" href="#contact-form">
                     <i class="fas fa-calendar-check"></i> Book a Call
