@@ -1,20 +1,20 @@
 ---
 layout: year-range
-title: 2026-Present - Platform Product Manager, GitHub
-subtitle: Building Developer Platforms at GitHub
+title: 2026-Present - Staff Product Manager, Data Platform, GitHub
+subtitle: Leading Product Management of Data Services and the Data Platform at GitHub
 permalink: /2026-present/
 nav_order: 7
 ---
 
-## Platform Product Manager
-**GitHub**
-*Starting August 2026*
+## Staff Product Manager, Data Platform
+**GitHub, a Microsoft Company**
+*Since August 2026*
 
-After seven years building data, AI, and governance platforms at Visa, I'm starting a new chapter as a **Platform Product Manager at GitHub** — one week off in between to reset, then straight into it.
+After seven years building data, AI, and governance platforms at Visa, I started a new chapter as **Staff Product Manager, Data Platform at GitHub** — leading Product Management of Data Services and the Data Platform at GitHub scale, one week off in between to reset, then straight into it.
 
 <div class="highlight-box">
     <h3>Why This Role</h3>
-    <p>Every platform I've built — Parsec, Tusker, the NextGen Merchant Data Platform, ViDA.AI — shared the same underlying job: give builders a paved road so they can move fast without reinventing infrastructure or re-litigating governance every time. GitHub is that idea at the scale of the entire developer ecosystem, not just one company's internal teams. I'm genuinely excited to bring a platform-product mindset — self-service by default, AI-native from the ground up, trust and safety built in rather than bolted on — to a product builders around the world depend on every day.</p>
+    <p>Every platform I've built — Parsec, Tusker, the NextGen Merchant Data Platform, ViDA.AI — shared the same underlying job: give builders a paved road so they can move fast without reinventing infrastructure or re-litigating governance every time. GitHub is that idea at the scale of the entire developer ecosystem, not just one company's internal teams. Leading Product Management for Data Services and the Data Platform means bringing a platform-product mindset — self-service by default, AI-native from the ground up, trust and safety built in rather than bolted on — to the data infrastructure builders around the world depend on every day.</p>
 </div>
 
 <div class="highlight-box">
@@ -28,12 +28,12 @@ After seven years building data, AI, and governance platforms at Visa, I'm start
 </div>
 
 <div class="highlight-box">
-    <h3>Upcoming Focus Areas</h3>
-    <p>It's early — I start next week — so this is a director of travel, not a shipped roadmap yet:</p>
+    <h3>Focus Areas — Product Management, Data Services &amp; Data Platform</h3>
+    <p>Leading Product Management for Data Services and the Data Platform at GitHub scale:</p>
     <ul>
-        <li>Getting deep on GitHub's platform surface area and where product, platform, and AI-native developer experience intersect.</li>
+        <li>Getting deep on GitHub's data platform surface area and where product, platform, and AI-native developer experience intersect.</li>
         <li>Understanding the builder community GitHub serves at a scale no internal enterprise platform ever exposed me to — millions of developers rather than thousands of internal engineers.</li>
-        <li>Bringing a governance-and-trust lens to platform decisions without slowing builders down — the same balance ViDA.AI was built around, applied to a very different surface.</li>
+        <li>Bringing a governance-and-trust lens to data platform decisions without slowing builders down — the same balance ViDA.AI was built around, applied to a very different surface.</li>
         <li>Learning first, shipping second — the usual discipline for the first quarter in any new platform org.</li>
     </ul>
 </div>
