@@ -134,12 +134,12 @@ title: Professional Timeline | Harish Raghavendra
 }
 
 .timeline-page h1 {
-  color: #2c3e50;
+  color: var(--color-text);
   margin-bottom: 10px;
 }
 
 .timeline-page .subtitle {
-  color: #7f8c8d;
+  color: var(--color-text-muted);
   font-size: 1.2em;
   margin-bottom: 30px;
   display: block;
@@ -157,8 +157,8 @@ title: Professional Timeline | Harish Raghavendra
 }
 
 .timeline-nav h3 {
-  color: #2c3e50;
-  border-bottom: 2px solid #ecf0f1;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-border);
   padding-bottom: 10px;
   margin-top: 0;
 }
@@ -179,7 +179,7 @@ title: Professional Timeline | Harish Raghavendra
   align-items: flex-start;
   gap: 0.25rem;
   padding: 12px 16px;
-  color: #3498db;
+  color: var(--color-accent);
   text-decoration: none;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -188,22 +188,22 @@ title: Professional Timeline | Harish Raghavendra
 
 .timeline-nav .nav-link i {
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: var(--color-text);
 }
 
 .timeline-nav .nav-link span {
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--color-text);
 }
 
 .timeline-nav .nav-link small {
-  color: #718096;
+  color: var(--color-text-subtle);
   font-size: 0.8rem;
 }
 
 .timeline-nav .nav-link:hover {
-  background-color: #f5f7fa;
-  color: #2980b9;
+  background-color: var(--color-surface-2);
+  color: var(--color-accent-strong);
   border-color: rgba(52, 152, 219, 0.25);
   transform: translateY(-1px);
 }
@@ -230,8 +230,8 @@ title: Professional Timeline | Harish Raghavendra
 
 .filter-button {
   border: 1px solid rgba(52, 152, 219, 0.4);
-  background: #ffffff;
-  color: #2c3e50;
+  background: var(--color-surface-card);
+  color: var(--color-text);
   border-radius: 999px;
   padding: 0.55rem 1.1rem;
   font-size: 0.9rem;
@@ -244,7 +244,7 @@ title: Professional Timeline | Harish Raghavendra
 }
 
 .filter-button i {
-  color: #3498db;
+  color: var(--color-accent);
 }
 
 .filter-button:hover {
@@ -252,39 +252,39 @@ title: Professional Timeline | Harish Raghavendra
 }
 
 .filter-button.is-active {
-  background: #3498db;
-  color: #ffffff;
-  border-color: #3498db;
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-color: var(--color-accent);
 }
 
 .filter-button.is-active i {
-  color: #ffffff;
+  color: var(--color-text-inverse);
 }
 
 .timeline-highlight {
-  background: #fff;
+  background: var(--color-surface-card);
   border-radius: 12px;
   padding: 25px;
   margin-bottom: 25px;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
-  border-left: 4px solid #3498db;
+  border-left: 4px solid var(--color-accent);
 }
 
 .timeline-highlight h2 {
-  color: #2c3e50;
+  color: var(--color-text);
   margin-top: 0;
   font-size: 1.5em;
 }
 
 .timeline-highlight h3 {
-  color: #3498db;
+  color: var(--color-accent);
   margin: 10px 0;
   font-size: 1.2em;
 }
 
 .timeline-highlight p {
   line-height: 1.6;
-  color: #34495e;
+  color: var(--color-text-muted);
 }
 
 .timeline-badges {
@@ -302,7 +302,7 @@ title: Professional Timeline | Harish Raghavendra
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--color-text);
   background: rgba(52, 152, 219, 0.12);
 }
 

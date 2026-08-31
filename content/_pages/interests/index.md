@@ -64,7 +64,7 @@ permalink: /interests/
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  background: #fff;
+  background: var(--color-surface-card);
   border-radius: var(--radius-md);
   padding: 1.25rem 1.35rem 1.35rem;
   text-decoration: none;

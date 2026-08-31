@@ -271,7 +271,7 @@ permalink: /articles/
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  background: #fff;
+  background: var(--color-surface-card);
   border-radius: var(--radius-md);
   padding: 1.25rem 1.35rem 1.35rem;
   text-decoration: none;
@@ -333,7 +333,7 @@ permalink: /articles/
 .article-card__read i { transition: transform 0.15s ease; }
 
 .article-card--featured {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(124, 58, 237, 0.04) 100%);
+  background: linear-gradient(180deg, var(--color-surface-card) 0%, rgba(124, 58, 237, 0.04) 100%);
   border-color: rgba(124, 58, 237, 0.20);
 }
 .article-card--featured .article-card__tag {

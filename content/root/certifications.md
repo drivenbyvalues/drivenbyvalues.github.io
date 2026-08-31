@@ -92,7 +92,7 @@ title: Certifications & Training
 }
 
 .certification-item, .training-item, .conference-item {
-    background: white;
+    background: var(--color-surface-card);
     border-left: 4px solid var(--accent-color);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -134,7 +134,7 @@ title: Certifications & Training
 
 .certification-id, .training-duration {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--color-text-subtle);
     margin-bottom: 0.5rem;
 }
 
@@ -157,13 +157,13 @@ title: Certifications & Training
 
 .training-topics li {
     margin-bottom: 0.25rem;
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .conference-highlights {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px dashed #eee;
+    border-top: 1px dashed var(--color-border);
 }
 
 .conference-highlights h4 {

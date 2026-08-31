@@ -129,7 +129,7 @@ title: Learning Resources & Growth
 }
 
 .learning-item {
-    background: white;
+    background: var(--color-surface-card);
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -167,7 +167,7 @@ title: Learning Resources & Growth
 
 .progress-container {
     height: 8px;
-    background-color: #f0f0f0;
+    background-color: var(--color-surface-2);
     border-radius: 4px;
     margin-top: 1rem;
     overflow: hidden;
@@ -192,7 +192,7 @@ title: Learning Resources & Growth
 }
 
 .path-card {
-    background: white;
+    background: var(--color-surface-card);
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -201,7 +201,7 @@ title: Learning Resources & Growth
 .path-card h3 {
     margin-top: 0;
     color: var(--primary-color);
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: 0.75rem;
     margin-bottom: 1rem;
 }
@@ -225,7 +225,7 @@ title: Learning Resources & Growth
     top: 0.9rem;
     width: 0.75rem;
     height: 0.75rem;
-    border: 2px solid #ddd;
+    border: 2px solid var(--color-border);
     border-radius: 50%;
 }
 
@@ -247,7 +247,7 @@ title: Learning Resources & Growth
 }
 
 .book-card {
-    background: white;
+    background: var(--color-surface-card);
     border-radius: 8px;
     padding: 1.5rem;
     text-align: center;
@@ -289,7 +289,7 @@ title: Learning Resources & Growth
     font-size: 0.75rem;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    background-color: #f0f0f0;
+    background-color: var(--color-surface-2);
     color: #666;
 }
 
@@ -306,7 +306,7 @@ title: Learning Resources & Growth
 }
 
 .resource-card {
-    background: white;
+    background: var(--color-surface-card);
     border-radius: 8px;
     padding: 1.5rem;
     text-align: center;

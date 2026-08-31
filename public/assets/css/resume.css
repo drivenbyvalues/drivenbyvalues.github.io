@@ -21,6 +21,11 @@
   --color-emerald: #059669;
   --color-amber: #d97706;
 
+  /* Surfaces & inverse text — tokenized so dark mode can flip them */
+  --color-surface-card: #ffffff;
+  --color-text-inverse: #ffffff;
+  --color-text-strong-alt: #1e293b;
+
   /* Backwards-compat aliases used by year-range markup */
   --primary-color: var(--color-text);
   --secondary-color: var(--color-text-muted);
@@ -47,6 +52,39 @@
   /* Typography */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ---------------------------------------------------------------------
+   Dark mode — applied via [data-color-scheme="dark"] on <html>, set by
+   ThemeToggle.tsx from an explicit user choice or the system preference.
+   Overrides the same token names so every component that already
+   consumes var(--color-*) picks up dark values with no markup changes.
+   --------------------------------------------------------------------- */
+[data-color-scheme="dark"] {
+  --color-bg: #0b1120;
+  --color-surface: #111827;
+  --color-surface-2: #1a2333;
+  --color-surface-card: #141c2e;
+  --color-text: #e6e9f0;
+  --color-text-muted: #a7b0c0;
+  --color-text-subtle: #7f8aa0;
+  --color-border: #26314a;
+  --color-border-strong: #37455f;
+  --color-accent: #5b8cff;
+  --color-accent-soft: rgba(91, 140, 255, 0.16);
+  --color-accent-strong: #8ab0ff;
+  --color-violet: #a78bfa;
+  --color-emerald: #34d399;
+  --color-amber: #fbbf24;
+  --color-text-inverse: #0b1120;
+  --color-text-strong-alt: #f8fafc;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.32);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.38);
+  --shadow-md: 0 14px 32px rgba(0, 0, 0, 0.42);
+  --shadow-lg: 0 26px 56px rgba(0, 0, 0, 0.48);
+
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -133,6 +171,60 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-links a.active { color: var(--color-accent); background: var(--color-accent-soft); }
 .nav-links a:after { content: none; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.color-scheme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.color-scheme-toggle__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--color-text-subtle);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.color-scheme-toggle__option:hover {
+  color: var(--color-text);
+}
+
+.color-scheme-toggle__option.active {
+  background: var(--color-surface-card);
+  color: var(--color-accent);
+  box-shadow: var(--shadow-xs);
+}
+
+@media (max-width: 640px) {
+  .color-scheme-toggle {
+    order: 3;
+  }
+}
+
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -213,7 +305,7 @@ img { max-width: 100%; height: auto; display: block; }
   width: 170px; height: 170px;
   border-radius: 50%;
   overflow: hidden;
-  border: 5px solid #fff;
+  border: 5px solid var(--color-surface-card);
   box-shadow: var(--shadow-md);
   background: var(--color-surface-2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -285,10 +377,10 @@ img { max-width: 100%; height: auto; display: block; }
 .btn:hover { transform: translateY(-2px); }
 .btn i { font-size: 0.85em; }
 
-.btn-primary { background: var(--color-text); color: #fff; }
-.btn-primary:hover { background: #1e293b; box-shadow: var(--shadow-md); color: #fff; }
+.btn-primary { background: var(--color-text); color: var(--color-text-inverse); }
+.btn-primary:hover { background: var(--color-text-strong-alt); box-shadow: var(--shadow-md); color: var(--color-text-inverse); }
 
-.btn-secondary { background: #fff; color: var(--color-text); border-color: var(--color-border); }
+.btn-secondary { background: var(--color-surface-card); color: var(--color-text); border-color: var(--color-border); }
 .btn-secondary:hover { background: var(--color-surface-2); border-color: var(--color-border-strong); }
 
 .btn-ghost { background: transparent; color: var(--color-text-muted); border-color: transparent; }
@@ -303,7 +395,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .metric-card {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 0.85rem 1.1rem;
@@ -339,7 +431,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.85rem;
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
@@ -435,7 +527,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .highlight-card {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 1.5rem;
@@ -510,7 +602,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .skill-card,
 .skill-column {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 1.15rem 1.25rem;
@@ -554,7 +646,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .experience-item,
 .education-item {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 1.25rem 1.4rem;
@@ -645,7 +737,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .year-hero__badge {
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-text-inverse);
   font-weight: 700;
   font-size: 0.78rem;
   letter-spacing: 0.05em;
@@ -685,7 +777,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .year-section {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
@@ -794,7 +886,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   gap: 0.4rem;
   padding: 0.55rem 0.9rem;
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text);
@@ -874,7 +966,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-mono);
   font-size: 0.74rem;
   color: var(--color-text-subtle);
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   padding: 0.18rem 0.5rem;
   border-radius: 999px;
@@ -905,13 +997,13 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 0.4rem;
   padding: 0.55rem 0.95rem;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-text-inverse);
   border-radius: var(--radius-sm);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
 }
-.back-link .button:hover { background: #1e293b; color: #fff; }
+.back-link .button:hover { background: var(--color-text-strong-alt); color: var(--color-text-inverse); }
 
 /* =====================================================================
    Mobile responsive refinements
@@ -1102,7 +1194,7 @@ img { max-width: 100%; height: auto; display: block; }
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
   background-color: var(--color-accent);
-  color: #fff;
+  color: var(--color-text-inverse);
   border-color: var(--color-accent);
 }
 
@@ -1127,7 +1219,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .project-card {
-  background: #fff;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 1.5rem;
@@ -1224,7 +1316,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0.65rem 0.85rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
-  background: #fff;
+  background: var(--color-surface-card);
   color: var(--color-text);
   font-family: inherit;
   font-size: 0.95rem;

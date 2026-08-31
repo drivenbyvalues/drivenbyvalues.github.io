@@ -5,9 +5,9 @@ type Theme = 'current' | 'future'
 const STORAGE_KEY = 'dbv-theme'
 
 function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'current'
+  if (typeof window === 'undefined') return 'future'
   const stored = window.localStorage.getItem(STORAGE_KEY)
-  return stored === 'future' ? 'future' : 'current'
+  return stored === 'current' ? 'current' : 'future'
 }
 
 export function ThemeToggle() {
@@ -30,10 +30,10 @@ export function ThemeToggle() {
       className="theme-toggle"
       onClick={() => setTheme(isFuture ? 'current' : 'future')}
       aria-pressed={isFuture}
-      title={isFuture ? 'Switch back to the current design' : 'Preview the redesigned glass look'}
+      title={isFuture ? 'Switch to the classic design' : 'Switch back to the new look'}
     >
       <i className={`fas ${isFuture ? 'fa-wand-magic-sparkles' : 'fa-swatchbook'}`} aria-hidden="true" />
-      <span>{isFuture ? 'New look' : 'Preview new look'}</span>
+      <span>{isFuture ? 'New look' : 'Classic look'}</span>
       <span className="theme-toggle__track" aria-hidden="true">
         <span className="theme-toggle__thumb" />
       </span>

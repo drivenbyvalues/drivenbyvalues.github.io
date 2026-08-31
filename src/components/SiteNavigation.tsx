@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { normalizePath } from '../routing'
+import { ColorSchemeToggle } from './ColorSchemeToggle'
 
 const navItems = [
   ['About', '/', 'fas fa-user'],
@@ -39,6 +40,7 @@ export function SiteNavigation({ currentPath }: { currentPath: string }) {
             )
           })}
         </div>
+        <ColorSchemeToggle />
         <button
           className="mobile-menu-toggle"
           type="button"
