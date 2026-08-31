@@ -1,24 +1,326 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('/assets/css/resume.css');
 
-@layer base {
-  * {
-    scroll-behavior: smooth;
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-width: 320px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
+}
+
+.markdown-content > :first-child,
+.article-body > :first-child {
+  margin-top: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: var(--color-text);
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+}
+
+.markdown-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.article-hero {
+  max-width: 760px;
+  margin: 0 auto 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.85rem;
+}
+
+.article-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.article-hero__year {
+  color: var(--color-text-subtle);
+  font-weight: 600;
+}
+
+.article-hero__title {
+  margin: 0.25rem 0 0.65rem;
+  color: var(--color-text);
+  font-size: clamp(1.6rem, 1.8vw + 1rem, 2.15rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.article-hero__summary {
+  margin: 0 0 0.85rem;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+.article-hero__crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-text-subtle);
+  font-size: 0.88rem;
+}
+
+.article-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  color: var(--color-text);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.article-body > h1:first-child {
+  display: none;
+}
+
+.article-body h2 {
+  margin: 2.4rem 0 0.85rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1.35rem;
+}
+
+.article-body h3 {
+  margin: 1.6rem 0 0.55rem;
+  font-size: 1.1rem;
+}
+
+.article-body p {
+  margin: 0.75rem 0;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0.6rem 0 1rem;
+  padding-left: 1.4rem;
+}
+
+.article-body li {
+  margin-bottom: 0.4rem;
+}
+
+.article-body code {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface-2);
+  color: var(--color-accent-strong);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.article-body pre {
+  margin: 1.2rem 0;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: #0f172a;
+  box-shadow: var(--shadow-md);
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.article-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.article-body table {
+  width: 100%;
+  margin: 1.1rem 0 1.4rem;
+  border: 1px solid var(--color-border);
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.article-body th,
+.article-body td {
+  padding: 0.7rem 0.95rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.article-body thead th {
+  background: var(--color-surface);
+  font-weight: 600;
+}
+
+.article-body blockquote {
+  margin: 1rem 0;
+  padding: 0.7rem 1rem;
+  border-left: 1px solid var(--color-accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--color-accent-soft);
+}
+
+.article-bottom-nav {
+  display: flex;
+  max-width: 760px;
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.react-lightbox {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  background: rgba(10, 12, 16, 0.94);
+}
+
+.react-lightbox figure {
+  display: flex;
+  max-width: min(1200px, 90vw);
+  max-height: 88vh;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.react-lightbox img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  object-fit: contain;
+}
+
+.react-lightbox figcaption,
+.react-lightbox__counter {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.react-lightbox__close,
+.react-lightbox__nav {
+  position: absolute;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  cursor: pointer;
+}
+
+.react-lightbox__close {
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.react-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+}
+
+.react-lightbox__nav--prev { left: 1rem; }
+.react-lightbox__nav--next { right: 1rem; }
+.react-lightbox__counter {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+}
+
+.not-found {
+  max-width: 680px;
+  margin: 10vh auto;
+  text-align: center;
+}
+
+.not-found__code {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: clamp(4rem, 15vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 1rem;
   }
-  
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
+
+  .article-hero__title {
+    font-size: 1.4rem;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+  .article-body {
+    font-size: 0.98rem;
   }
-  
-  .prose {
-    max-width: none;
+
+  .article-bottom-nav {
+    flex-direction: column;
   }
+
+  .react-lightbox {
+    padding: 3.5rem 0.5rem;
+  }
+
+  .react-lightbox__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .react-lightbox__nav--prev { left: 0.4rem; }
+  .react-lightbox__nav--next { right: 0.4rem; }
 }
