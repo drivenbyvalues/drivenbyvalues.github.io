@@ -244,6 +244,87 @@ permalink: /articles/
 
 <section class="section section-articles">
   <div class="section-header">
+    <h2 class="section-title">Data Services PaaS · 2026</h2>
+    <p class="section-subtitle">Platform-as-a-service requirements specs for the data services a platform team is most often asked to run centrally — availability tiers, disaster-recovery targets, and the metrics both the platform team and consuming applications need to instrument.</p>
+  </div>
+  <div class="article-grid">
+    <a class="article-card article-card--featured" href="{{ '/articles/2026-paas-requirements-framework/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-map"></i> Framework</span>
+      <h3 class="article-card__title">From Monolith to PaaS — A PM's Framework for Writing Platform Requirements</h3>
+      <p class="article-card__lede">The method behind the five specs below: audit before you specify, tier by blast radius, write every requirement as testable, and treat the migration path as its own set of requirements.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card article-card--featured" href="{{ '/articles/2026-paas-workload-profiling-migration-playbook/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-magnifying-glass-chart"></i> Migration Playbook</span>
+      <h3 class="article-card__title">Profiling a Team's Query Pattern and Choosing a Migration Path</h3>
+      <p class="article-card__lede">A ten-step method for documenting how a team actually uses a service — hot keys, skew, consistency assumptions, anti-patterns — plus a menu of migration assistance models from self-service to white-glove, matched to what the profile reveals.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-redis-requirements/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-bolt"></i> Cache / In-Memory</span>
+      <h3 class="article-card__title">Redis-as-a-Service — Platform Requirements</h3>
+      <p class="article-card__lede">Sentinel vs. Cluster tiering, persistence as an availability decision, RPO/RTO by tier, and the cache-hit and fallback-path metrics application teams have to own themselves.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-redis-command-compatibility-and-scaling/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-code-branch"></i> Redis Deep Dive</span>
+      <h3 class="article-card__title">Redis — Command Compatibility for Migration & Scaling Clusters, Not Caches</h3>
+      <p class="article-card__lede">A command-by-command migration-readiness map (GET/SET vs. multi-key ops vs. Lua scripts vs. pub/sub), plus a sizing method for growing via more right-sized shards instead of ever-bigger single-instance caches.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-kafka-requirements/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-stream"></i> Streaming</span>
+      <h3 class="article-card__title">Kafka-as-a-Service — Platform Requirements</h3>
+      <p class="article-card__lede">Replication factor and ISR requirements, unclean-leader-election policy, MirrorMaker2 cross-region DR, and the consumer-lag metrics that matter more than any broker-side dashboard.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-kafka-api-compatibility-and-scaling/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-code-branch"></i> Kafka Deep Dive</span>
+      <h3 class="article-card__title">Kafka — API Compatibility for Migration & Scaling Past a Broker's Ceiling</h3>
+      <p class="article-card__lede">Why transactional producers and compacted topics don't transparently follow a cluster migration, plus a partition/broker sizing method that avoids both under- and over-partitioning.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-elasticsearch-requirements/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-search"></i> Search</span>
+      <h3 class="article-card__title">Elasticsearch-as-a-Service — Platform Requirements</h3>
+      <p class="article-card__lede">Dedicated master quorum, hot-warm tiering, snapshot/CCR-based DR, and why search indices are best treated as rebuildable projections rather than a system of record.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-elasticsearch-operation-compatibility-and-scaling/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-code-branch"></i> Elasticsearch Deep Dive</span>
+      <h3 class="article-card__title">Elasticsearch — Operation Compatibility & Scaling Past the JVM Heap Ceiling</h3>
+      <p class="article-card__lede">A migration-readiness map from single-document GETs to mapping explosions, plus why a bigger node stops helping past the ~30GB compressed-oops heap boundary.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-grpc-protobuf-requirements/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-plug"></i> Service Mesh / RPC</span>
+      <h3 class="article-card__title">gRPC/Protobuf Messaging-as-a-Service — Platform Requirements</h3>
+      <p class="article-card__lede">Deadline propagation, retry budgets, and circuit breaking at the mesh layer, paired with CI-enforced schema-compatibility gates so a field rename can't silently break a caller in production.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-grpc-protobuf-rpc-compatibility-and-scaling/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-code-branch"></i> gRPC Deep Dive</span>
+      <h3 class="article-card__title">gRPC/Protobuf — RPC Compatibility & Scaling Past One Instance</h3>
+      <p class="article-card__lede">Why an in-flight stream can't be cut over mid-connection, and a replica-sizing method built on connection/stream ceilings and client-side multiplexing instead of a bigger instance.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-mysql-requirements/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-database"></i> Relational Database</span>
+      <h3 class="article-card__title">MySQL-as-a-Service — Platform Requirements</h3>
+      <p class="article-card__lede">Semi-sync replication as the line between Standard and Critical tiers, layered backup + binlog PITR, and why point-in-time recovery has to be drilled, not just assumed to work.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/articles/2026-paas-mysql-query-compatibility-and-scaling/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-code-branch"></i> MySQL Deep Dive</span>
+      <h3 class="article-card__title">MySQL — Query Compatibility & Scaling Beyond a Single Primary</h3>
+      <p class="article-card__lede">A migration-readiness map from single-row CRUD to isolation-level-sensitive transactions, plus the escalation ladder from read replicas to functional partitioning to horizontal sharding.</p>
+      <span class="article-card__read">Read article <i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
+</section>
+
+<section class="section section-articles">
+  <div class="section-header">
     <h2 class="section-title">Architecture Deep Dive</h2>
     <p class="section-subtitle">The full architectural narrative behind the agentic GRC platform.</p>
   </div>
