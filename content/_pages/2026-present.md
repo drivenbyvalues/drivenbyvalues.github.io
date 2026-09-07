@@ -1,16 +1,16 @@
 ---
 layout: year-range
-title: 2026-Present - Staff Product Manager, Data Platform, GitHub
+title: 2026-Present - Staff Product Manager, GitHub Platform
 subtitle: Leading Product Management of Data Services and the Data Platform at GitHub
 permalink: /2026-present/
 nav_order: 7
 ---
 
-## Staff Product Manager, Data Platform
+## Staff Product Manager, GitHub Platform
 **GitHub, a Microsoft Company**
 *Since August 2026*
 
-After seven years building data, AI, and governance platforms at Visa, I started a new chapter as **Staff Product Manager, Data Platform at GitHub** — leading Product Management of Data Services and the Data Platform at GitHub scale, one week off in between to reset, then straight into it.
+After seven years building data, AI, and governance platforms at Visa, I started a new chapter as **Staff Product Manager, GitHub Platform** — leading Product Management of Data Services and the Data Platform at GitHub scale, one week off in between to reset, then straight into it.
 
 <div class="highlight-box">
     <h3>Why This Role</h3>

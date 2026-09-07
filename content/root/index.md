@@ -1,6 +1,6 @@
 ---
 layout: resume
-title: Harish Raghavendra - Staff Product Manager, Data Platform, GitHub
+title: Harish Raghavendra - Staff Product Manager, GitHub Platform
 ---
 
 <header class="hero">
@@ -11,7 +11,7 @@ title: Harish Raghavendra - Staff Product Manager, Data Platform, GitHub
             </div>
         </div>
         <div class="hero-body">
-            <p class="hero-kicker">Staff Product Manager, Data Platform · GitHub, a Microsoft Company · Since August 2026</p>
+            <p class="hero-kicker">Staff Product Manager, GitHub Platform · GitHub, a Microsoft Company · Since August 2026</p>
             <h1 class="hero-title">Building trustworthy, AI-native developer platforms that scale globally</h1>
             <p class="hero-lede">
                 20+ years designing high-impact platforms, guiding governance policy, and mentoring distributed teams
@@ -118,7 +118,7 @@ title: Harish Raghavendra - Staff Product Manager, Data Platform, GitHub
     </div>
     <div class="experience-item">
         <div class="experience-header">
-            <h3>Staff Product Manager, Data Platform</h3>
+            <h3>Staff Product Manager, GitHub Platform</h3>
             <div class="experience-date">Aug 2026 - Present</div>
         </div>
         <div class="company">GitHub, a Microsoft Company</div>
