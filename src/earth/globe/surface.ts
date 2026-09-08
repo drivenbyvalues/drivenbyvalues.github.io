@@ -287,7 +287,7 @@ export function paintSurface({ fields, params, mask, soft, targets, stride }: Pa
         r *= swirl
         g *= swirl
         b *= swirl
-        roughV = 0.3 + 0.08 * (1 - depth)
+        roughV = 0.42 + 0.08 * (1 - depth)
         bumpV = 6 + dt * 3
 
         const seaIce = clamp01((absLat - iceEdge + 2 + dt * 8 + (mo - 0.5) * 6) / 6)

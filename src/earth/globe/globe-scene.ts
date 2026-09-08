@@ -10,6 +10,7 @@ import {
   DirectionalLight,
   Float32BufferAttribute,
   Group,
+  HemisphereLight,
   LinearFilter,
   LinearMipmapLinearFilter,
   Mesh,
@@ -180,7 +181,7 @@ const haloFragment = /* glsl */ `
     vec3 viewDir = normalize(cameraPosition - vPositionW);
     float d = clamp(-dot(normalize(vNormalW), viewDir), 0.0, 1.0);
     // Exponential falloff away from the limb, like scattered light thinning with altitude.
-    float glow = pow(d * 1.9, 4.5) * 0.9;
+    float glow = pow(d * 1.9, 3.0) * 1.05;
     float sun = dot(normalize(vNormalW), uSunDir);
     float day = clamp(sun * 1.2 + 0.55, 0.06, 1.0);
     // Sunset band: warm the scattering where the terminator meets the limb.
@@ -199,7 +200,7 @@ const rimFragment = /* glsl */ `
   void main() {
     vec3 viewDir = normalize(cameraPosition - vPositionW);
     float rim = 1.0 - clamp(dot(normalize(vNormalW), viewDir), 0.0, 1.0);
-    float glow = pow(rim, 4.5) * 0.85 + pow(rim, 12.0) * 0.5;
+    float glow = pow(rim, 3.5) * 0.75 + pow(rim, 10.0) * 0.4;
     float sun = dot(normalize(vNormalW), uSunDir);
     float day = clamp(sun * 1.5 + 0.5, 0.03, 1.0);
     float dusk = smoothstep(0.3, 0.0, abs(sun + 0.05)) * 0.5;
@@ -213,13 +214,17 @@ export interface SunPreset {
   right: number
   up: number
   toward: number
+  /** Wrapped daylight bleed past the terminator, 0..1. */
+  fill: number
+  /** Multiplier on the ambient + hemisphere fill lights. */
+  ambient: number
 }
 
 export const sunPresets = {
   /** Mostly lit disk with a dark crescent on the left—cinematic deep time. */
-  day: { right: 0.7, up: 0.3, toward: 0.65 } as SunPreset,
+  day: { right: 0.55, up: 0.35, toward: 0.85, fill: 0.32, ambient: 1 } as SunPreset,
   /** Terminator running through the middle: half day, half city lights. */
-  dusk: { right: 0.9, up: 0.2, toward: 0.22 } as SunPreset,
+  dusk: { right: 0.95, up: 0.25, toward: 0.05, fill: 0.08, ambient: 0.28 } as SunPreset,
 }
 
 export function createGlobeScene(container: HTMLElement, initialMa: number): GlobeHandle {
@@ -246,11 +251,14 @@ export function createGlobeScene(container: HTMLElement, initialMa: number): Glo
   const sunDir = new Vector3(1, 0.32, 0.55).normalize()
   const targetSunDir = sunDir.clone()
   let sunPreset: SunPreset = sunPresets.day
-  const sun = new DirectionalLight(0xfff4e6, 2.6)
+  const sun = new DirectionalLight(0xfff6ea, 1.9)
   sun.position.copy(sunDir).multiplyScalar(20)
   scene.add(sun)
-  // Faint blue earthshine so the night side keeps its silhouette.
-  scene.add(new AmbientLight(0x2a3a66, 0.55))
+  // Bright, even fill (the globe.gl look): a neutral ambient plus a
+  // sky-blue/ground-warm hemisphere so the disk never falls into hard shadow.
+  const ambient = new AmbientLight(0xffffff, 0.75)
+  const hemisphere = new HemisphereLight(0xbcd4ff, 0x3a2e24, 0.55)
+  scene.add(ambient, hemisphere)
 
   scene.add(makeStars(5200, 90, 1.35, 0.85))
   scene.add(makeStars(420, 90, 2.6, 1))
@@ -316,13 +324,14 @@ export function createGlobeScene(container: HTMLElement, initialMa: number): Glo
     uCloudShift: { value: 0 },
     uSunDir: { value: sunDirView },
     uLightsIntensity: { value: 1 },
+    uFill: { value: 0.32 },
   }
   earthMaterial.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, lightUniforms)
     shader.fragmentShader = shader.fragmentShader
       .replace(
         '#include <common>',
-        '#include <common>\nuniform sampler2D uLights;\nuniform sampler2D uClouds;\nuniform float uCloudShift;\nuniform vec3 uSunDir;\nuniform float uLightsIntensity;',
+        '#include <common>\nuniform sampler2D uLights;\nuniform sampler2D uClouds;\nuniform float uCloudShift;\nuniform vec3 uSunDir;\nuniform float uLightsIntensity;\nuniform float uFill;',
       )
       .replace(
         '#include <map_fragment>',
@@ -339,7 +348,12 @@ export function createGlobeScene(container: HTMLElement, initialMa: number): Glo
         '#include <emissivemap_fragment>',
         `#include <emissivemap_fragment>
         {
-          float night = smoothstep(0.16, -0.22, dot(normalize(normal), uSunDir));
+          float sun = dot(normalize(normal), uSunDir);
+          // Wrapped fill: lets daylight bleed well past the geometric terminator
+          // so the shading rolls off gently instead of snapping to black.
+          float wrap = smoothstep(-0.55, 0.35, sun);
+          totalEmissiveRadiance += diffuseColor.rgb * wrap * uFill;
+          float night = smoothstep(0.1, -0.3, sun);
           vec3 lights = texture2D(uLights, vMapUv).rgb;
           totalEmissiveRadiance += lights * night * uLightsIntensity * 1.6;
         }`,
@@ -547,6 +561,10 @@ export function createGlobeScene(container: HTMLElement, initialMa: number): Glo
       .addScaledVector(camBack, sunPreset.toward)
       .normalize()
     sunDir.lerp(targetSunDir, 1 - Math.pow(0.02, dt)).normalize()
+    const ease = 1 - Math.pow(0.05, dt)
+    ambient.intensity += (0.75 * sunPreset.ambient - ambient.intensity) * ease
+    hemisphere.intensity += (0.55 * sunPreset.ambient - hemisphere.intensity) * ease
+    lightUniforms.uFill.value += (sunPreset.fill - lightUniforms.uFill.value) * ease
     sun.position.copy(sunDir).multiplyScalar(20)
     sunDirView.copy(sunDir).transformDirection(camera.matrixWorldInverse)
 
