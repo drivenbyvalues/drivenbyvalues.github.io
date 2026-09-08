@@ -11,6 +11,7 @@ const navItems = [
   ['Certifications', '/certifications/', 'fas fa-certificate'],
   ['Learning', '/learning/', 'fas fa-graduation-cap'],
   ['Years', '/years/', 'fas fa-calendar-alt'],
+  ['Earth', '/earth/', 'fas fa-globe-americas'],
   ['Contact', '/#contact', 'fas fa-envelope'],
 ] as const
 

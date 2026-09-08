@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import generatedPages from './generated/content.json'
 import { ArticlePage } from './components/ArticlePage'
 import { HtmlContent } from './components/HtmlContent'
@@ -13,10 +13,16 @@ import type { ContentPage } from './types'
 const pages = generatedPages as ContentPage[]
 const pageByRoute = new Map(pages.map((page) => [normalizePath(page.route), page]))
 
+const EarthPage = lazy(() => import('./earth/EarthPage').then((m) => ({ default: m.EarthPage })))
+const EARTH_ROUTE = '/earth/'
+const appRoutes = new Set([EARTH_ROUTE])
+const isKnownRoute = (path: string) => pageByRoute.has(path) || appRoutes.has(path)
+
 function App() {
   const [location, setLocation] = useState(() => window.location)
   const currentPath = normalizePath(location.pathname)
   const page = pageByRoute.get(currentPath)
+  const isEarth = currentPath === EARTH_ROUTE
 
   useEffect(() => {
     const updateLocation = () => setLocation(new URL(window.location.href) as unknown as Location)
@@ -30,7 +36,7 @@ function App() {
       const link = (event.target as Element).closest<HTMLAnchorElement>('a[href]')
       if (!link || link.target === '_blank' || link.hasAttribute('download')) return
       const url = new URL(link.href, window.location.href)
-      if (url.origin !== window.location.origin || (!pageByRoute.has(normalizePath(url.pathname)) && url.pathname !== window.location.pathname)) return
+      if (url.origin !== window.location.origin || (!isKnownRoute(normalizePath(url.pathname)) && url.pathname !== window.location.pathname)) return
       event.preventDefault()
       navigate(`${url.pathname}${url.search}${url.hash}`)
     }
@@ -39,14 +45,21 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = page?.metadata.title ? `${page.metadata.title}` : 'Driven By Values'
+    document.title = isEarth ? 'Earth, and everyone on it | Driven By Values' : page?.metadata.title ? `${page.metadata.title}` : 'Driven By Values'
     requestAnimationFrame(() => {
       if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView()
       else window.scrollTo({ top: 0 })
     })
-  }, [location, page])
+  }, [location, page, isEarth])
 
   const content = useMemo(() => {
+    if (isEarth) {
+      return (
+        <Suspense fallback={<div className="earth-page-loading" aria-busy="true" />}>
+          <EarthPage />
+        </Suspense>
+      )
+    }
     if (!page) {
       return (
         <section className="not-found">
@@ -61,15 +74,19 @@ function App() {
     if (page.metadata.layout === 'article') return <ArticlePage page={page} />
     if (page.metadata.layout === 'year-range') return <YearPage page={page} />
     return <HtmlContent html={page.html} />
-  }, [page])
+  }, [page, isEarth])
 
   return (
     <>
       {/* THESIS: Preserve the content-first Driven By Values resume while replacing Jekyll with route-aware React. */}
       <SiteNavigation currentPath={currentPath} />
-      <div className="container" key={currentPath}>
-        {content}
-      </div>
+      {isEarth ? (
+        <div key={currentPath}>{content}</div>
+      ) : (
+        <div className="container" key={currentPath}>
+          {content}
+        </div>
+      )}
       {page && <PageEnhancements page={page} />}
       <ThemeToggle />
     </>

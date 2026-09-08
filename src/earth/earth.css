@@ -1,0 +1,966 @@
+/* =====================================================================
+   Earth — one living globe, three chapters. Panels are frosted glass on
+   the site's canvas; the stage itself is always deep space, so the light
+   and dark schemes only re-tint the chrome around it.
+   ===================================================================== */
+
+.earth-page {
+  --earth-radius: var(--radius-lg, 28px);
+  --earth-radius-sm: var(--radius-md, 18px);
+  --earth-glass: var(--glass-tint, rgba(255, 255, 255, 0.6));
+  --earth-glass-strong: var(--glass-tint-strong, rgba(255, 255, 255, 0.78));
+  --earth-glass-border: var(--glass-border, rgba(255, 255, 255, 0.65));
+  --earth-shadow: var(--shadow-md, 0 16px 40px rgba(15, 23, 42, 0.12));
+  --earth-space: #02040a;
+  max-width: min(1440px, 100% - 2.5rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 4rem;
+  color: var(--color-text);
+}
+
+[data-color-scheme="dark"] .earth-page {
+  --earth-glass: var(--glass-tint, rgba(24, 28, 40, 0.6));
+  --earth-glass-strong: var(--glass-tint-strong, rgba(28, 33, 48, 0.8));
+  --earth-glass-border: var(--glass-border, rgba(255, 255, 255, 0.12));
+  --earth-shadow: var(--shadow-md, 0 18px 42px rgba(0, 0, 0, 0.5));
+}
+
+/* --- Hero ------------------------------------------------------------ */
+.earth-hero {
+  margin: 0.75rem 0 1.25rem;
+}
+
+.earth-hero__kicker {
+  margin: 0 0 0.4rem;
+  color: var(--color-accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.earth-hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--color-text);
+}
+
+.earth-hero__lede {
+  max-width: 640px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+/* --- Chapter nav ------------------------------------------------------ */
+.earth-chapters-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0 0 1.25rem;
+}
+
+.earth-chapter {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'icon label' 'icon blurb';
+  column-gap: 0.85rem;
+  align-items: center;
+  padding: 0.95rem 1.15rem;
+  border: 1px solid var(--earth-glass-border);
+  border-radius: var(--earth-radius-sm);
+  background: var(--earth-glass);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  backdrop-filter: saturate(160%) blur(18px);
+  box-shadow: var(--shadow-sm, 0 6px 20px rgba(15, 23, 42, 0.06));
+  color: var(--color-text-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.earth-chapter:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--earth-shadow);
+}
+
+.earth-chapter.is-active {
+  background: var(--earth-glass-strong);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: var(--color-text);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), var(--earth-shadow);
+}
+
+.earth-chapter i {
+  grid-area: icon;
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 0.95rem;
+}
+
+.earth-chapter__label {
+  grid-area: label;
+  font-weight: 650;
+  font-size: 0.98rem;
+  color: var(--color-text);
+}
+
+.earth-chapter__blurb {
+  grid-area: blurb;
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+/* --- Layout ----------------------------------------------------------- */
+.earth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.85fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.earth-stage-wrap {
+  position: sticky;
+  top: 5.25rem;
+  height: calc(100vh - 6.5rem);
+  min-height: 520px;
+  border-radius: var(--earth-radius);
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 110%, #0b1a3a 0%, var(--earth-space) 55%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 40px 90px rgba(2, 6, 23, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  isolation: isolate;
+}
+
+.earth-stage {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.earth-stage:active {
+  cursor: grabbing;
+}
+
+.earth-stage canvas {
+  display: block;
+}
+
+.earth-stage__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 3;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(8, 12, 24, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.earth-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(10, 20, 50, 0.85), rgba(2, 4, 10, 0.95));
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.earth-loading__ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: conic-gradient(#6f9dff calc(var(--progress) * 360deg), rgba(255, 255, 255, 0.1) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+  animation: earth-spin 2.4s linear infinite;
+}
+
+@keyframes earth-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Labels on the globe -------------------------------------------- */
+.globe-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.globe-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem 0.25rem 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(6, 10, 22, 0.62);
+  color: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  margin: -0.85rem 0 0 0.6rem;
+}
+
+.globe-label:hover {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.globe-label__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--label-color);
+  box-shadow: 0 0 10px var(--label-color);
+}
+
+.globe-label--emphasis {
+  font-size: 0.8rem;
+  border-color: var(--label-color);
+}
+
+/* --- Side panel -------------------------------------------------------- */
+.earth-side {
+  min-width: 0;
+  animation: earth-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes earth-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.earth-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 1.5rem;
+  border: 1px solid var(--earth-glass-border);
+  border-radius: var(--earth-radius);
+  background: var(--earth-glass);
+  -webkit-backdrop-filter: saturate(160%) blur(22px);
+  backdrop-filter: saturate(160%) blur(22px);
+  box-shadow: var(--earth-shadow);
+}
+
+.earth-panel__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.earth-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.earth-kicker__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.earth-panel__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+.earth-panel__time {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.86rem;
+  color: var(--color-text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.earth-panel__lede {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* --- Scrubber ----------------------------------------------------------- */
+.earth-scrubber {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.earth-scrubber__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.earth-play {
+  flex: none;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--earth-glass-border);
+  border-radius: 50%;
+  background: var(--earth-glass-strong);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.earth-play:hover {
+  transform: scale(1.06);
+}
+
+.earth-play.is-playing {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse, #fff);
+}
+
+.earth-play i {
+  font-size: 0.8rem;
+  margin-left: 0.05rem;
+}
+
+.earth-scrubber__track {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding-top: 1.55rem;
+}
+
+.earth-scrubber__eras {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.25rem;
+}
+
+.earth-scrubber__era {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--era-accent) 22%, transparent);
+  color: var(--color-text-muted);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.earth-scrubber__era span {
+  display: block;
+  padding: 0 0.35rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.25rem;
+}
+
+.earth-scrubber__era.is-active {
+  background: color-mix(in srgb, var(--era-accent) 55%, transparent);
+  color: var(--color-text);
+}
+
+.earth-scrubber__ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.55rem;
+  height: 1.2rem;
+  pointer-events: none;
+}
+
+.earth-scrubber__tick {
+  position: absolute;
+  top: 0.35rem;
+  width: 2px;
+  height: 0.5rem;
+  margin-left: -1px;
+  border-radius: 1px;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.earth-scrubber__tick.is-past {
+  opacity: 0.95;
+}
+
+.earth-range {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 1.2rem;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.earth-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--range-accent) var(--range-progress), color-mix(in srgb, var(--color-text) 14%, transparent) var(--range-progress));
+}
+
+.earth-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text) 14%, transparent);
+}
+
+.earth-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--range-accent);
+}
+
+.earth-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border: 3px solid var(--range-accent);
+  border-radius: 50%;
+  background: var(--color-surface-card, #fff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), 0 0 0 4px color-mix(in srgb, var(--range-accent) 22%, transparent);
+  transition: transform 0.2s ease;
+}
+
+.earth-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--range-accent);
+  border-radius: 50%;
+  background: var(--color-surface-card, #fff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.earth-range:hover::-webkit-slider-thumb,
+.earth-range:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.earth-scrubber__labels {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3.35rem;
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.66rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Event strip -------------------------------------------------------- */
+.earth-event {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--earth-radius-sm);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  animation: earth-fade-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.earth-event__marker {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.earth-event__time {
+  color: var(--color-text-subtle);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.74rem;
+  white-space: nowrap;
+}
+
+.earth-event__label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+/* --- Facts -------------------------------------------------------------- */
+.earth-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.earth-fact h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.earth-fact h3 i {
+  color: var(--color-accent);
+  font-size: 0.78rem;
+}
+
+.earth-fact p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.earth-events,
+.earth-chapters {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.earth-events button,
+.earth-chapters button {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.earth-events button:hover,
+.earth-chapters button:hover {
+  background: var(--color-accent-soft);
+}
+
+.earth-events .is-future button,
+.earth-chapters .is-future button {
+  color: var(--color-text-subtle);
+}
+
+.earth-chapters .is-active button {
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
+}
+
+.earth-events__time {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.74rem;
+  color: var(--color-text-subtle);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.earth-events__label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.earth-footnote {
+  margin: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-subtle);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+/* --- Migration legend --------------------------------------------------- */
+.earth-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.earth-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.earth-legend span {
+  width: 1.1rem;
+  height: 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* --- Ages --------------------------------------------------------------- */
+.earth-ages {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.earth-age-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.earth-age-chip i {
+  font-size: 0.9rem;
+  color: var(--age-accent);
+}
+
+.earth-age-chip:hover {
+  transform: translateY(-2px);
+}
+
+.earth-age-chip.is-past {
+  opacity: 0.8;
+}
+
+.earth-age-chip.is-active {
+  background: color-mix(in srgb, var(--age-accent) 18%, var(--color-surface-2));
+  border-color: color-mix(in srgb, var(--age-accent) 60%, transparent);
+  color: var(--color-text);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--age-accent) 18%, transparent);
+}
+
+.earth-population {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--color-text-subtle);
+  font-size: 0.84rem;
+}
+
+.earth-population i {
+  color: var(--color-accent);
+}
+
+.earth-highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0.95rem;
+  border-left: 3px solid var(--age-accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--age-accent) 12%, var(--color-surface-2));
+  font-size: 0.9rem;
+  animation: earth-fade-in 0.4s ease;
+}
+
+.earth-highlight span {
+  color: var(--color-text-muted);
+}
+
+.earth-civs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.earth-civs button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface-card, var(--color-surface));
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.earth-civs button:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--age-accent) 55%, transparent);
+  box-shadow: var(--shadow-sm, 0 6px 20px rgba(15, 23, 42, 0.08));
+}
+
+.earth-civs__name {
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.earth-civs__note {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--color-text-subtle);
+}
+
+.earth-list {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.earth-list li {
+  margin-bottom: 0.25rem;
+}
+
+.earth-challenges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.earth-challenges li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-surface-card, var(--color-surface));
+}
+
+.earth-challenge__problem,
+.earth-challenge__solution {
+  padding: 0.75rem 0.9rem;
+}
+
+.earth-challenge__problem {
+  border-right: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-text) 3%, transparent);
+}
+
+.earth-challenge__solution {
+  background: color-mix(in srgb, var(--age-accent) 9%, transparent);
+}
+
+.earth-challenge__tag {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.earth-challenge__solution .earth-challenge__tag {
+  color: var(--age-accent);
+}
+
+.earth-challenges p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.earth-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.earth-pager .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.earth-pager .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .earth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-stage-wrap {
+    top: 4.5rem;
+    height: min(58vh, 560px);
+    min-height: 360px;
+    z-index: 5;
+  }
+
+  .earth-side {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .earth-page {
+    max-width: calc(100% - 1.5rem);
+    padding-top: 0.75rem;
+  }
+
+  .earth-chapters-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .earth-chapter {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'icon' 'label';
+    justify-items: center;
+    row-gap: 0.35rem;
+    padding: 0.7rem 0.4rem;
+    text-align: center;
+  }
+
+  .earth-chapter i {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.85rem;
+  }
+
+  .earth-chapter__label {
+    font-size: 0.78rem;
+  }
+
+  .earth-chapter__blurb {
+    display: none;
+  }
+
+  .earth-stage__hint {
+    white-space: nowrap;
+    font-size: 0.68rem;
+  }
+
+  .earth-stage-wrap {
+    height: min(50vh, 440px);
+    min-height: 300px;
+    border-radius: 20px;
+  }
+
+  .earth-panel {
+    padding: 1.1rem;
+  }
+
+  .earth-ages {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .earth-civs {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-challenges li {
+    grid-template-columns: 1fr;
+  }
+
+  .earth-challenge__problem {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .earth-events button,
+  .earth-chapters button {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+
+  .earth-scrubber__labels {
+    padding-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .earth-side,
+  .earth-event,
+  .earth-highlight {
+    animation: none;
+  }
+
+  .earth-chapter,
+  .earth-age-chip,
+  .earth-civs button,
+  .earth-play {
+    transition: none;
+  }
+}
