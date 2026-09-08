@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { eraAt, eras, formatMa, formatMaShort, maToTrack, trackToMa } from '../data/eras'
+import { eraAt, eras, formatMa, formatMaShort, maToTrack, spotlightAt, trackToMa } from '../data/eras'
 import { sunPresets, type GlobeHandle } from '../globe/globe-scene'
 import { landCentroidAt } from '../globe/plates'
 import { usePlayback } from '../use-playback'
@@ -15,6 +15,7 @@ export function DeepTimePanel({ handle }: DeepTimePanelProps) {
   const [track, setTrack] = useState(0)
   const ma = useMemo(() => trackToMa(track), [track])
   const era = eraAt(ma)
+  const spotlight = spotlightAt(ma)
   const setPosition = useCallback((t: number) => setTrack(t), [])
   const { isPlaying, toggle, stop } = usePlayback(track, setPosition, 75)
 
@@ -112,6 +113,16 @@ export function DeepTimePanel({ handle }: DeepTimePanelProps) {
           <span className="earth-event__time">{formatMaShort(latestEvent.ma)}</span>
           <span className="earth-event__label">{latestEvent.label}</span>
         </div>
+      )}
+
+      {spotlight && (
+        <aside className="earth-spotlight" key={spotlight.title} style={{ ['--spot-accent' as string]: spotlight.accent }}>
+          <p className="earth-spotlight__kicker">
+            <i className="fas fa-star" aria-hidden="true" /> Spotlight · {formatMaShort(spotlight.from)} – {formatMaShort(spotlight.to)}
+          </p>
+          <h3>{spotlight.title}</h3>
+          <p>{spotlight.text}</p>
+        </aside>
       )}
 
       <div className="earth-facts">

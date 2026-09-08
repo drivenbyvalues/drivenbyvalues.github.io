@@ -124,9 +124,17 @@ const keyframes: Keyframe[] = [
   K(420, { vegetation: 0.35, desert: 0.55, iceLat: 86, warmth: 0.1 }, modern),
   K(360, { vegetation: 0.85, desert: 0.4, iceLat: 82, warmth: 0.1 }, modern),
   K(300, { vegetation: 0.9, desert: 0.45, iceLat: 58, warmth: -0.35 }, modern),
-  K(260, { vegetation: 0.85, desert: 0.7, iceLat: 80, warmth: 0.1 }, modern),
-  K(252, { vegetation: 0.35, desert: 0.9, iceLat: 90, warmth: 0.5, atmosphere: [190, 150, 120], cloudTint: [240, 220, 205] }, modern),
-  K(240, { vegetation: 0.55, desert: 0.85, iceLat: 90, warmth: 0.4 }, modern),
+  // Permian Pangaea: ice retreats, a huge arid interior, monsoon-fed coasts,
+  // and warm shallow seas over the continental shelves.
+  K(280, { vegetation: 0.8, desert: 0.7, iceLat: 72, warmth: -0.05, oceanShallow: [46, 132, 158] }, modern),
+  K(262, { vegetation: 0.75, desert: 0.8, iceLat: 86, warmth: 0.2, oceanShallow: [50, 138, 160] }, modern),
+  K(253, { vegetation: 0.7, desert: 0.8, iceLat: 90, warmth: 0.3 }, modern),
+  // The Great Dying: Siberian Traps volcanism, acid rain, anoxic purple-green
+  // seas, a ~10 °C hothouse and near-total loss of forests.
+  K(252, { vegetation: 0.12, desert: 0.95, iceLat: 90, warmth: 0.75, volcanism: 0.35, oceanDeep: [30, 44, 60], oceanShallow: [70, 110, 108], atmosphere: [200, 140, 100], atmosphereStrength: 1.25, cloudCover: 0.75, cloudTint: [225, 200, 180] }, modern),
+  K(251, { vegetation: 0.1, desert: 0.95, iceLat: 90, warmth: 0.8, volcanism: 0.25, oceanDeep: [26, 42, 62], oceanShallow: [66, 110, 112], atmosphere: [205, 150, 110], atmosphereStrength: 1.2, cloudCover: 0.7, cloudTint: [230, 210, 195] }, modern),
+  K(247, { vegetation: 0.35, desert: 0.9, iceLat: 90, warmth: 0.55, volcanism: 0.05, atmosphere: [150, 160, 220] }, modern),
+  K(240, { vegetation: 0.6, desert: 0.85, iceLat: 90, warmth: 0.4 }, modern),
   K(200, { vegetation: 0.9, desert: 0.6, iceLat: 90, warmth: 0.3 }, modern),
   K(150, { vegetation: 1, desert: 0.4, iceLat: 90, warmth: 0.3 }, modern),
   K(95, { vegetation: 1, desert: 0.3, iceLat: 90, warmth: 0.45, oceanDeep: [10, 40, 90] }, modern),

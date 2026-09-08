@@ -78,16 +78,19 @@ export const eras: Era[] = [
     accent: '#34d399',
     tagline: 'Life explodes, then paints the land green',
     world:
-      'Gondwana drifts over the south pole while Laurentia and Baltica collide to build the Appalachians and Caledonides. By 300 Ma everything fuses into Pangaea, ringed by the Panthalassa ocean. Coal swamps bury enough carbon to push oxygen above 30%.',
-    atmosphere: 'Oxygen climbs to modern levels and beyond; CO₂ swings drive an Ordovician ice age and the great Carboniferous forests.',
-    life: 'The Cambrian explosion, fish, the first land plants (~470 Ma), forests and tetrapods (~370 Ma), giant insects, and reptiles. Ends with the worst mass extinction ever, triggered by the Siberian Traps.',
+      'Gondwana drifts over the south pole while Laurentia and Baltica collide to build the Appalachians and Caledonides. By 300 Ma everything fuses into Pangaea, ringed by the Panthalassa ocean. The supercontinent remakes the climate: a vast arid interior, mega-monsoons on the Tethys coasts, and reef complexes hundreds of kilometres long in the shallow seas of what is now Texas.',
+    atmosphere: 'Oxygen climbs past 30% in the Carboniferous coal swamps, then falls as Pangaea dries. At the very end, the Siberian Traps pump out CO₂ and sulphur for tens of thousands of years—warming the oceans ~10 °C and stripping them of oxygen.',
+    life: 'The Cambrian explosion, fish, the first land plants (~470 Ma), forests and tetrapods (~370 Ma). On Pangaea, our own synapsid lineage rises: Dimetrodon, the first herbivorous vertebrates, then tusked dicynodonts and the cynodonts that lead to mammals. The Great Dying at 252 Ma erases more than 80% of species.',
     events: [
       { ma: 538, label: 'Cambrian explosion' },
       { ma: 470, label: 'First land plants' },
       { ma: 445, label: 'End-Ordovician extinction' },
       { ma: 370, label: 'Forests and tetrapods' },
       { ma: 335, label: 'Pangaea assembles' },
-      { ma: 252, label: 'Permian–Triassic extinction' },
+      { ma: 295, label: 'Dimetrodon and the first herbivores' },
+      { ma: 268, label: 'Giant reefs; dicynodonts and gorgonopsians' },
+      { ma: 260, label: 'Capitanian extinction' },
+      { ma: 252, label: 'The Great Dying (Siberian Traps)' },
     ],
   },
   {
@@ -98,10 +101,11 @@ export const eras: Era[] = [
     accent: '#22c55e',
     tagline: 'Pangaea breaks apart under the dinosaurs',
     world:
-      'Pangaea rifts along what becomes the Atlantic (~200 Ma). India tears free of Antarctica and races north; Africa and South America unzip. Sea levels are 100–250 m higher, flooding continental interiors with shallow seas. No polar ice at all.',
+      'The Triassic opens on a devastated Pangaea: for ~5 million years the survivors—Lystrosaurus above all—dominate a hot, low-diversity world before new ecosystems appear. Pangaea then rifts along what becomes the Atlantic (~200 Ma). India tears free of Antarctica and races north; Africa and South America unzip. Sea levels are 100–250 m higher and there is no polar ice at all.',
     atmosphere: 'Warm greenhouse with CO₂ several times today’s level; oxygen dips then recovers.',
-    life: 'Dinosaurs dominate land, pterosaurs the sky, ichthyosaurs and plesiosaurs the seas. Flowering plants (~130 Ma) rewrite ecosystems. Small mammals and birds wait in the wings. The Chicxulub impact ends the era.',
+    life: 'From the ashes of the Great Dying, the age of reptiles begins: archosaurs, then dinosaurs (~230 Ma), pterosaurs, ichthyosaurs and plesiosaurs. Flowering plants (~130 Ma) rewrite ecosystems. Small mammals—the cynodonts’ heirs—and birds wait in the wings. The Chicxulub impact ends the era.',
     events: [
+      { ma: 247, label: 'Lystrosaurus world; recovery begins' },
       { ma: 230, label: 'First dinosaurs' },
       { ma: 200, label: 'Pangaea starts to rift' },
       { ma: 150, label: 'Archaeopteryx; Atlantic opens' },
@@ -130,6 +134,50 @@ export const eras: Era[] = [
     ],
   },
 ]
+
+export interface Spotlight {
+  /** Shown while the scrubber sits inside [from, to] Ma. */
+  from: number
+  to: number
+  title: string
+  text: string
+  accent: string
+}
+
+export const spotlights: Spotlight[] = [
+  {
+    from: 299,
+    to: 253,
+    title: 'Life on Pangaea',
+    text: 'One landmass, one ocean. The interior bakes as a desert larger than any today, while mega-monsoons drench the Tethys coasts. Reefs stretch for hundreds of kilometres over shallow shelves, and on land the synapsids—Dimetrodon, tusked dicynodonts, sabre-toothed gorgonopsians—preview traits that mammals will inherit.',
+    accent: '#f59e0b',
+  },
+  {
+    from: 253,
+    to: 246,
+    title: 'The Great Dying',
+    text: 'The Siberian Traps erupt through coal beds for ~60,000 years. CO₂ soars, oceans warm ~10 °C, acidify and lose their oxygen; forests collapse and soils wash into the sea. More than 80% of species vanish—the closest life has come to ending. The survivors, led by the pig-sized Lystrosaurus, inherit an empty world in which the age of reptiles will begin.',
+    accent: '#ef4444',
+  },
+  {
+    from: 66.5,
+    to: 63,
+    title: 'Chicxulub',
+    text: 'A 10 km asteroid strikes the Yucatán shelf. Ejecta re-enters as a global heat pulse, then soot and sulphate darken the sky for years. Three quarters of species—including all non-avian dinosaurs—are lost; mammals and birds radiate into the gap.',
+    accent: '#94a3b8',
+  },
+  {
+    from: 720,
+    to: 633,
+    title: 'Snowball Earth',
+    text: 'Ice reaches the tropics, and only a slushy equatorial belt may stay open. Volcanic CO₂ accumulates for millions of years beneath the frozen lid until a runaway greenhouse melts it within a few thousand years—likely twice.',
+    accent: '#c084fc',
+  },
+]
+
+export function spotlightAt(ma: number) {
+  return spotlights.find((s) => ma <= s.from && ma >= s.to)
+}
 
 /* Non-linear scrubber: 4.54 Ga of history but most of the story is recent,
  * so give each stretch a share of the track proportional to how much happens

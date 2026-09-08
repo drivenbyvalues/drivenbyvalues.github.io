@@ -964,3 +964,46 @@
     transition: none;
   }
 }
+
+/* --- Spotlight (pivotal moments) ---------------------------------------- */
+.earth-spotlight {
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--spot-accent) 45%, transparent);
+  border-radius: var(--earth-radius-sm);
+  background:
+    radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--spot-accent) 22%, transparent), transparent 60%),
+    var(--color-surface-card, var(--color-surface));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--spot-accent) 12%, transparent);
+  animation: earth-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.earth-spotlight__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.35rem;
+  color: var(--spot-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.earth-spotlight h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.earth-spotlight p:last-child {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .earth-spotlight { animation: none; }
+}
