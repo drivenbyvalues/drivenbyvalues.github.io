@@ -221,8 +221,8 @@ export interface SunPreset {
 }
 
 export const sunPresets = {
-  /** Mostly lit disk with a dark crescent on the left—cinematic deep time. */
-  day: { right: 0.55, up: 0.35, toward: 0.85, fill: 0.32, ambient: 1 } as SunPreset,
+  /** Real three-quarter side light so the terminator sweeps visibly as the globe turns, like a world-fixed sun. */
+  day: { right: 0.82, up: 0.3, toward: 0.42, fill: 0.3, ambient: 1 } as SunPreset,
   /** Terminator running through the middle: half day, half city lights. */
   dusk: { right: 0.95, up: 0.25, toward: 0.05, fill: 0.08, ambient: 0.28 } as SunPreset,
 }
@@ -356,6 +356,17 @@ export function createGlobeScene(container: HTMLElement, initialMa: number): Glo
           float night = smoothstep(0.1, -0.3, sun);
           vec3 lights = texture2D(uLights, vMapUv).rgb;
           totalEmissiveRadiance += lights * night * uLightsIntensity * 1.6;
+
+          // Ocean sun-glint: a Blinn-Phong specular highlight, sharpest where
+          // roughnessFactor is low (open water) and absent on rough land —
+          // the glossy "shine" a flat PBR diffuse term alone doesn't give you.
+          vec3 viewDir = normalize(vViewPosition);
+          vec3 halfDir = normalize(uSunDir + viewDir);
+          float specAngle = max(dot(normalize(normal), halfDir), 0.0);
+          float smoothness = 1.0 - clamp(roughnessFactor, 0.0, 1.0);
+          float shininess = mix(6.0, 260.0, smoothness);
+          float glint = pow(specAngle, shininess) * smoothness * clamp(sun, 0.0, 1.0);
+          totalEmissiveRadiance += vec3(1.0, 0.97, 0.9) * glint * 1.5;
         }`,
       )
   }
