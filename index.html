@@ -14,11 +14,7 @@
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
             : mode;
           document.documentElement.setAttribute('data-color-scheme', resolved);
-
-          var storedTheme = window.localStorage.getItem('dbv-theme');
-          if (storedTheme !== 'current') {
-            document.documentElement.setAttribute('data-theme', 'future');
-          }
+          document.documentElement.setAttribute('data-theme', 'future');
         } catch (e) {}
       })();
     </script>

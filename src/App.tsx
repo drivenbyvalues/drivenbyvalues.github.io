@@ -4,7 +4,6 @@ import { ArticlePage } from './components/ArticlePage'
 import { HtmlContent } from './components/HtmlContent'
 import { PageEnhancements } from './components/PageEnhancements'
 import { SiteNavigation } from './components/SiteNavigation'
-import { ThemeToggle } from './components/ThemeToggle'
 import { YearPage } from './components/YearPage'
 import { YearsIndex } from './components/YearsIndex'
 import { navigate, normalizePath } from './routing'
@@ -88,7 +87,6 @@ function App() {
         </div>
       )}
       {page && <PageEnhancements page={page} />}
-      <ThemeToggle />
     </>
   )
 }
