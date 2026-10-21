@@ -5,9 +5,9 @@
 <title>Harish Raghavendra — Resume</title>
 <!-- Source of truth for public/resumes/Harish.Raghavendra.<MM>.<YYYY>.pdf. Rebuild with: scripts/build-resume-pdf.sh -->
 <style>
-  @page { size: Letter; margin: 0.5in 0.55in; }
+  @page { size: Letter; margin: 0.42in 0.5in; }
   * { box-sizing: border-box; }
-  body { margin: 0; font: 9.6pt/1.36 "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1f2933; }
+  body { margin: 0; font: 9.3pt/1.33 "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1f2933; }
   a { color: inherit; text-decoration: none; }
   header { border-bottom: 1.5px solid #1d4ed8; padding-bottom: 6px; margin-bottom: 8px; }
   h1 { font-size: 20pt; margin: 0; letter-spacing: -0.2px; color: #111827; }
@@ -15,7 +15,9 @@
   .contact { font-size: 8.8pt; color: #4b5563; }
   h2 { font-size: 10pt; text-transform: uppercase; letter-spacing: 0.8px; color: #1d4ed8; margin: 10px 0 4px; border-bottom: 0.5px solid #cbd5e1; padding-bottom: 2px; }
   .summary { margin: 0; }
-  .role { margin: 7px 0 0; break-inside: avoid-page; }
+  .role { margin: 7px 0 0; }
+  li, .role-head, .title, .scope { break-inside: avoid; }
+  .role-head, .title, .sub { break-after: avoid; }
   .role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .role-head .org { font-weight: 700; font-size: 10.2pt; color: #111827; }
   .role-head .dates { font-size: 8.8pt; color: #4b5563; white-space: nowrap; }
@@ -57,8 +59,12 @@
   <div class="title">Director, Data &amp; AI Platform and Governance</div>
   <div class="sub">AI governance (2024–2026)</div>
   <ul>
-    <li><b>ViDA.AI agentic GRC platform:</b> Built the platform first as an open-source, MIT-licensed personal project (GRC Conductor), then led its customization into Visa's internal GRC platform: an AI-native system of 30+ collaborating agents, several hundred APIs, and a multi-hundred-thousand-line codebase. Cut assessment turnaround 80%+ (multi-day to near real time) and unlocked multi-million-dollar revenue by letting governance run at the speed of business. Now carried forward into Visa's next-generation risk-agent tool chain.</li>
-    <li><b>Decision quality by design:</b> Multi-dimensional rubrics, claims, and decision traces for every agent run. Deterministic risk scoring decoupled from LLM inference for auditable, reproducible outcomes. Multi-LLM orchestration across GPT-4.1/5 and Claude Sonnet.</li>
+    <li><b>ViDA.AI, end-to-end agentic governance:</b> Built the platform first as an open-source, MIT-licensed project (GRC Conductor), then led its customization into Visa's internal GRC platform, automating the path from conversational intake to risk scoring, specialist review, and decision. Cut assessment turnaround 80%+ (multi-day to near real time) and unlocked multi-million-dollar revenue. Now carried forward into Visa's next-generation risk-agent tool chain.</li>
+    <li><b>Multi-agent architecture:</b> 3-tier agent-to-agent pipeline of 20 skills, 6 command agents, and 4 workflows (low-risk, full review, escalated, third-party risk) on a signed message bus, with saga rollback and SLA tiers of 2 hours, 5 days, and 20 days.</li>
+    <li><b>Thresholds &amp; low-risk automation:</b> Each skill passes a confidence score down the chain, and any score under 0.80 forces escalation. Auto-approval requires risk ≥75, confidence ≥0.90, and no DPIA/LIA, with fixed 0.85/0.88 confidence floors that policy settings can't lower. The LLM scores and explains; a deterministic engine decides. Low-risk cases auto-approve in under 2 hours.</li>
+    <li><b>Intake &amp; reviewer agents:</b> Conversational intake over MCP, gated on a combined template-coverage and LLM-rubric quality score before auto-submit, with AI coaching while users draft. Reviewer copilots pre-fill reviews, write privacy, data-use, and AI-governance notes, and estimate control ratings for residual risk. AI-suggested and human-edited fields are tracked separately as a feedback signal.</li>
+    <li><b>Grounding, quality &amp; cost controls:</b> Two-stage RAG (pgvector top-50, then cross-encoder rerank) scoped to policy domain and user role. Claim-level evidence with contradiction detection. Prompt-quality scoring (GEPA). Per-assessment token and cost budgets, circuit breakers, LLM caching, and model-alias routing with fallback across OpenAI, Azure, and Anthropic. Every agent run is audited with tokens, cost, and confidence.</li>
+    <li><b>Regulatory automation:</b> Automated DPIA/LIA, EU AI Act risk classification, and bias assessment. Compliance matrix mapped to EU AI Act, NIST AI RMF, and ISO 42001 (37 articles). Drift detection triggers re-assessment.</li>
     <li><b>Data &amp; AI Governance Deputy Lead:</b> Shaped Data Use Policy and Responsible AI guidance and reviewed high-risk use cases with Privacy, Competition, Affiliates, and IP legal teams. Contributed to AI inventions.</li>
   </ul>
   <div class="sub">Data platforms (2019–2024)</div>
@@ -106,13 +112,13 @@
 
 <h2>Selected Builds</h2>
 <ul class="builds">
-  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the open-source foundation of ViDA.AI. A2A multi-agent pipeline, MCP server for Claude Code and Claude Desktop, RAG over policy documents, on-chain audit registry (Polygon). TypeScript, React, PostgreSQL/pgvector.</li>
+  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the open-source foundation of ViDA.AI, adding an MCP server for Claude Code and Claude Desktop and an on-chain audit registry (Polygon). 300+ APIs and 8,800+ automated tests. TypeScript, React, PostgreSQL/pgvector.</li>
   <li><b>NammaSeva</b>: multi-tenant hyperlocal services marketplace with voice and AI-assisted intake (React Native, NestJS, PostGIS).</li>
 </ul>
 
 <h2>Skills</h2>
 <dl class="skills">
-  <dt>AI &amp; agents</dt><dd>Multi-agent orchestration, MCP, RAG (pgvector, Pinecone), rubric-based LLM scoring, decision traces, Claude &amp; GPT APIs</dd>
+  <dt>AI &amp; agents</dt><dd>Multi-agent (A2A) orchestration, MCP, RAG with reranking (pgvector), rubric scoring &amp; confidence gating, prompt-quality scoring, token/cost budgets, model routing &amp; fallback, decision traces, Claude &amp; GPT APIs</dd>
   <dt>Data platforms</dt><dd>Hadoop, Hive, Spark, Kafka, Trino/Presto, Airflow · PostgreSQL, MySQL, Cassandra, MongoDB, Redis · data quality &amp; catalog</dd>
   <dt>Governance &amp; risk</dt><dd>SOX, PCI, ITGC, PII/GDPR (DPIA, LIA), EU AI Act risk classification, NIST AI RMF, external audit readiness</dd>
   <dt>Build</dt><dd>TypeScript/Node.js, React, Python, Java/Spring Boot, SQL · AWS, GCP, Kubernetes, Terraform</dd>
