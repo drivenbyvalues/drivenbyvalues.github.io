@@ -136,9 +136,9 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
         </div>
         <div class="company">Visa Inc., Foster City, CA</div>
         <ul>
-            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, customized from the open-source GRC Portal I first built as a personal, MIT-licensed project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-portal-production.up.railway.app" target="_blank">View live platform →</a>
+            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, customized from the open-source GRC Conductor I first built as a personal, MIT-licensed project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-portal-production.up.railway.app" target="_blank">View live platform →</a>
                 <ul>
-                    <li><strong>Platform foundation (open-source GRC Portal, customized for Visa):</strong></li>
+                    <li><strong>Platform foundation (open-source GRC Conductor, customized for Visa):</strong></li>
                     <li><strong>A2A Multi-Agent Pipeline:</strong> Designed a three-tier autonomous governance pipeline — a set of stateless skills → several command agents → a few tiered workflows — with automated risk classification routing to Low Risk (a few hours SLA), Full Review (roughly a business week), or Escalated (a few weeks), plus a confidence-chain gate that prevents auto-approval below a high-confidence floor.</li>
                     <li><strong>Claude AI &amp; MCP Integration:</strong> Built a Model Context Protocol (MCP) integration exposing a handful of GRC tools to Claude Code and Claude Desktop — enabling natural-language governance intake, submission, and end-to-end workflow orchestration without custom tooling. Supports both an Anthropic SDK autonomous agent CLI (Option A) and an MCP stdio server (Option B).</li>
                     <li><strong>Privacy &amp; Regulatory Automation:</strong> Automated GDPR DPIA/LIA assessments, EU AI Act high-risk classification, and privacy impact scoring via LLM — replacing weeks of manual legal review with sub-hour automated analysis at a high-confidence threshold.</li>
@@ -248,7 +248,7 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
         </article>
 
         <article class="project-card">
-            <h3 class="project-card__title">AI-Driven GRC Portal</h3>
+            <h3 class="project-card__title">GRC Conductor</h3>
             <p class="project-card__description">MIT-licensed agentic governance platform — 30-50 agents, A2A pipeline, Claude MCP integration, and blockchain audit registry. Customized to run Visa's internal GRC platform (ViDA.AI).</p>
             <div class="project-card__stack">
                 <span>React/Vite</span>
