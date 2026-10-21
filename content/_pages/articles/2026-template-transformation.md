@@ -150,7 +150,7 @@ A reviewer sees the suggested mapping, the confidence breakdown across strategie
 - The confidence framework with per-field reasoning and warnings.
 - The adaptive learning loop — Mapping Rules Library extracted from transformation history.
 - The schema enhancement pipeline that augments templates with transformation metadata.
-- The clear separation: the LLM is a tool inside a proprietary transformation pipeline. The patentable invention is the architecture, not the model call.
+- The clear separation: the LLM is a tool inside a proprietary transformation pipeline. The novelty is in the architecture, not the model call.
 
 ## Tech Stack
 
