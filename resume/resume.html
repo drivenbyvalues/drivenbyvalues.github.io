@@ -59,7 +59,7 @@
   <div class="title">Director, Data &amp; AI Platform and Governance</div>
   <div class="sub">AI governance (2024–2026)</div>
   <ul>
-    <li><b>ViDA.AI, end-to-end agentic governance:</b> Built the entire platform first outside Visa as an open-source, MIT-licensed project (GRC Conductor), then forked and customized it as Visa's internal GRC platform, automating the path from conversational intake to risk scoring, specialist review, and decision. Cut assessment turnaround 80%+ (multi-day to near real time) and unlocked multi-million-dollar revenue. Now carried forward into Visa's next-generation risk-agent tool chain.</li>
+    <li><b>ViDA.AI, end-to-end agentic governance:</b> Built the entire platform first outside Visa as an MIT-licensed personal project (GRC Conductor), then forked and customized it as Visa's internal GRC platform, automating the path from conversational intake to risk scoring, specialist review, and decision. Cut assessment turnaround 80%+ (multi-day to near real time) and unlocked multi-million-dollar revenue. Now carried forward into Visa's next-generation risk-agent tool chain.</li>
     <li><b>Multi-agent architecture:</b> 3-tier agent-to-agent pipeline of 20 skills, 6 command agents, and 4 workflows (low-risk, full review, escalated, third-party risk) on a signed message bus, with saga rollback and SLA tiers of 2 hours, 5 days, and 20 days.</li>
     <li><b>Thresholds &amp; low-risk automation:</b> Each skill passes a confidence score down the chain, and any score under 0.80 forces escalation. Auto-approval requires risk ≥75, confidence ≥0.90, and no DPIA/LIA, with fixed 0.85/0.88 confidence floors that policy settings can't lower. The LLM scores and explains; a deterministic engine decides. Low-risk cases auto-approve in under 2 hours.</li>
     <li><b>Intake &amp; reviewer agents:</b> Conversational intake through a Claude MCP integration (Claude Code and Claude Desktop), gated on a combined template-coverage and LLM-rubric quality score before auto-submit, with AI coaching while users draft. Reviewer copilots pre-fill reviews, write privacy, data-use, and AI-governance notes, and estimate control ratings for residual risk. AI-suggested and human-edited fields are tracked separately as a feedback signal.</li>
@@ -112,7 +112,7 @@
 
 <h2>Selected Builds</h2>
 <ul class="builds">
-  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the open-source foundation of ViDA.AI, plus an on-chain audit registry (Polygon) that was not part of the Visa deployment. 300+ APIs and 8,800+ automated tests. TypeScript, React, PostgreSQL/pgvector.</li>
+  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the foundation of ViDA.AI, plus an on-chain audit registry (Polygon) that was not part of the Visa deployment. 300+ APIs and 8,800+ automated tests. TypeScript, React, PostgreSQL/pgvector.</li>
   <li><b>NammaSeva</b>: multi-tenant hyperlocal services marketplace with voice and AI-assisted intake (React Native, NestJS, PostGIS).</li>
 </ul>
 

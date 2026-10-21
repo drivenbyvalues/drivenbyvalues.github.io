@@ -82,7 +82,7 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
         {% include components/highlight-card.html
             title="Platform Wins"
             icon="fas fa-trophy"
-            items="AI-Driven GRC Platform (built open-source, customized to run Visa's internal GRC): 30-50 agents · A2A 3-tier pipeline · Claude MCP integration · blockchain audit registry · multi-million revenue unlock|NextGen Merchant Data Platform spanning 130M+ merchant locations across Merchants, PayFacs, Acquirers|Self-supported Visa Core Hadoop 3.x distribution saving $80M+ over 5 years|Self-service agent-based API platform managing 12K+ servers via 1,500+ APIs"
+            items="AI-Driven GRC Platform (built independently under MIT license, customized to run Visa's internal GRC): 30-50 agents · A2A 3-tier pipeline · Claude MCP integration · blockchain audit registry · multi-million revenue unlock|NextGen Merchant Data Platform spanning 130M+ merchant locations across Merchants, PayFacs, Acquirers|Self-supported Visa Core Hadoop 3.x distribution saving $80M+ over 5 years|Self-service agent-based API platform managing 12K+ servers via 1,500+ APIs"
         %}
     </div>
 </section>
@@ -136,7 +136,7 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
         </div>
         <div class="company">Visa Inc., Foster City, CA</div>
         <ul>
-            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, forked and customized from GRC Conductor, which I first built entirely outside Visa as an open-source, MIT-licensed project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-conductor.up.railway.app" target="_blank">View live platform →</a>
+            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, forked and customized from GRC Conductor, which I first built entirely outside Visa as an MIT-licensed personal project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-conductor.up.railway.app" target="_blank">View live platform →</a>
                 <ul>
                     <li><strong>End-to-end governance automation:</strong> Conversational intake → risk scoring → specialist review → decision, with every agent run audited (tokens, cost, confidence, decision trace).</li>
                     <li><strong>Multi-agent architecture:</strong> 3-tier agent-to-agent pipeline of 20 skills, 6 command agents, and 4 workflows (low-risk, full review, escalated, third-party risk) on a signed message bus, with saga rollback and SLA tiers of 2 hours, 5 days, and 20 days.</li>
