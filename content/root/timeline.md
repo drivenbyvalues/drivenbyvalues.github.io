@@ -20,7 +20,7 @@ title: Professional Timeline | Harish Raghavendra
       <h3>Career Milestones</h3>
       <ul>
         <li><a href="{{ '/2026-present/index.html' | relative_url }}" class="nav-link" data-domains="platform,ai"><i class="fas fa-code-branch"></i><span>2026-Present</span><small>Platform PM, GitHub</small></a></li>
-        <li><a href="{{ '/2019-2026/index.html' | relative_url }}" class="nav-link" data-domains="grc,ai,platform"><i class="fas fa-shield-alt"></i><span>2019-2026</span><small>Data &amp; AI Governance</small></a></li>
+        <li><a href="{{ '/2019-2026/index.html' | relative_url }}" class="nav-link" data-domains="grc,ai,platform"><i class="fas fa-shield-alt"></i><span>2019-2026</span><small>Director, Data &amp; AI</small></a></li>
         <li><a href="{{ '/2016-2019/index.html' | relative_url }}" class="nav-link" data-domains="platform,fintech"><i class="fas fa-network-wired"></i><span>2016-2019</span><small>Sr. Tech Program Manager</small></a></li>
         <li><a href="{{ '/2009-2016/index.html' | relative_url }}" class="nav-link" data-domains="platform,media"><i class="fas fa-tv"></i><span>2009-2016</span><small>Senior Engineering Manager</small></a></li>
         <li><a href="{{ '/2007-2009/index.html' | relative_url }}" class="nav-link" data-domains="fintech"><i class="fas fa-credit-card"></i><span>2007-2009</span><small>Technical Lead</small></a></li>
@@ -55,8 +55,8 @@ title: Professional Timeline | Harish Raghavendra
           <span class="domain-badge badge--platform"><i class="fas fa-layer-group"></i> Platform</span>
         </div>
         <h2>Previous Chapter (2019–2026)</h2>
-        <h3>Director, Data &amp; AI Governance at Visa Inc.</h3>
-        <p>Seven years building Parsec, Tusker, the NextGen Merchant Data Platform, and ViDA.AI — Visa's AI-driven GRC platform (30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, dozens of features) spanning hundreds of billions of transactions and 100M-150M merchant locations. <a href="/2019-2026/">Read more →</a></p>
+        <h3>Director, Data &amp; AI Platform and Governance at Visa Inc.</h3>
+        <p>Seven years building Parsec, Tusker, the NextGen Merchant Data Platform, and ViDA.AI — Visa's AI-driven GRC platform (30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, dozens of features) spanning 215B+ transactions ($15T payment volume) and 130M+ merchant locations. <a href="/2019-2026/">Read more →</a></p>
       </div>
 
       <div class="timeline-highlight" data-domains="platform,fintech,ai">
@@ -67,9 +67,9 @@ title: Professional Timeline | Harish Raghavendra
         <h2>Key Achievements</h2>
         <ul>
           <li>Built Visa's Agentic AI GRC platform unlocking multi-million dollar revenue and cutting assessment time by roughly 80-95%.</li>
-          <li>Defined the 3-year NextGen Merchant Data Platform strategy across Merchants, PayFacs, and Acquirers (100M-150M locations).</li>
-          <li>Drove Visa's self-supported Core Hadoop 3.x distribution—saving tens of millions of dollars over 5 years.</li>
-          <li>Led 2-year Hadoop in-place upgrade across 150-200 data apps, 75-100 clusters, and hundreds of PB.</li>
+          <li>Defined the 3-year NextGen Merchant Data Platform strategy across Merchants, PayFacs, and Acquirers (130M+ locations).</li>
+          <li>Drove Visa's self-supported Core Hadoop 3.x distribution—saving $80M+ over 5 years.</li>
+          <li>Led 2-year Hadoop in-place upgrade across 175+ data apps, 90+ clusters, and hundreds of PB.</li>
           <li>Scaled Hulu Live TV datastore for Super Bowl, GoT Finale, Winter Olympics, NCAA—Cassandra at 1M+ qps.</li>
         </ul>
       </div>
@@ -115,9 +115,9 @@ title: Professional Timeline | Harish Raghavendra
         </div>
         <h2>Technical Leadership</h2>
         <ul>
-          <li>Grew the Visa data platform team from a handful of engineers to 60-90+ across roughly 5 scrum teams, with attrition well below industry average.</li>
-          <li>Owns dozens of big data products at hundreds of billions of transactions Visa-wide.</li>
-          <li>Shipped a self-service agent-based API platform managing 10K-15K+ servers via 1,200-1,800 APIs (NodeJS/ReactJS); roughly a dozen teams onboarded.</li>
+          <li>Grew the Visa data platform team from 3 engineers to 80+ across 5 scrum teams, with attrition well below industry average.</li>
+          <li>Owns 30+ big data products at 215B+ transactions ($15T payment volume) Visa-wide.</li>
+          <li>Shipped a self-service agent-based API platform managing 12K+ servers via 1,500+ APIs (NodeJS/ReactJS); 14 teams onboarded.</li>
           <li>Multi-LLM orchestration across GPT-4.1, GPT-5, and Claude Sonnet 4.5 / 4.6 / Opus 4 in production GRC workflows.</li>
           <li>Cleared external audit of the Hadoop program with the Federal Reserve, FBA, and government agencies.</li>
         </ul>

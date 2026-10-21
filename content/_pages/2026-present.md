@@ -21,9 +21,9 @@ After seven years building data, AI, and governance platforms at Visa, I started
     <h3>What I'm Bringing Forward</h3>
     <ul>
         <li><strong>Self-service platform thinking:</strong> Parsec turned manually-managed big-data infrastructure into a fleet of automated agents onboarding teams in weeks instead of months — the same instinct applies to any platform builders touch daily.</li>
-        <li><strong>Scaling foundational infrastructure with trust:</strong> grew Visa's self-supported Hadoop distribution (Tusker) from a small founding effort to a 60-90+ engineer platform that cleared external Federal Reserve audit — proof that "foundational" and "fast-moving" aren't in tension if the guardrails are designed in from day one.</li>
+        <li><strong>Scaling foundational infrastructure with trust:</strong> grew Visa's self-supported Hadoop distribution (Tusker) from a small founding effort to an 80+ engineer platform that cleared external Federal Reserve audit — proof that "foundational" and "fast-moving" aren't in tension if the guardrails are designed in from day one.</li>
         <li><strong>AI-native product design:</strong> spent the last chapter building ViDA.AI, an agentic governance platform with several dozen intelligent agents — direct, recent experience shipping AI-first products where automation and human judgment need to compose cleanly, not compete.</li>
-        <li><strong>Org and stakeholder scale:</strong> single-threaded ownership of dozens of big data products, cross-functional delivery with Legal, Privacy, and Security partners, and growing engineering teams while holding attrition well below industry norms.</li>
+        <li><strong>Org and stakeholder scale:</strong> single-threaded ownership of 30+ big data products, cross-functional delivery with Legal, Privacy, and Security partners, and growing engineering teams while holding attrition well below industry norms.</li>
     </ul>
 </div>
 
