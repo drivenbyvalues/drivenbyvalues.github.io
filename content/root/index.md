@@ -136,7 +136,7 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
         </div>
         <div class="company">Visa Inc., Foster City, CA</div>
         <ul>
-            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, customized from the open-source GRC Conductor I first built as a personal, MIT-licensed project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-portal-production.up.railway.app" target="_blank">View live platform →</a>
+            <li><strong>ViDA.AI — AI-Driven GRC Platform:</strong> Led Visa's internal agentic governance platform, customized from the open-source GRC Conductor I first built as a personal, MIT-licensed project — shipped with 30-50 agents, a multi-hundred-thousand-line codebase, several hundred APIs, and dozens of features — cutting assessment review time by roughly 80-95% and enabling a multi-million dollar revenue unlock. <a href="https://grc-conductor.up.railway.app" target="_blank">View live platform →</a>
                 <ul>
                     <li><strong>Platform foundation (open-source GRC Conductor, customized for Visa):</strong></li>
                     <li><strong>A2A Multi-Agent Pipeline:</strong> Designed a three-tier autonomous governance pipeline — a set of stateless skills → several command agents → a few tiered workflows — with automated risk classification routing to Low Risk (a few hours SLA), Full Review (roughly a business week), or Escalated (a few weeks), plus a confidence-chain gate that prevents auto-approval below a high-confidence floor.</li>
@@ -257,7 +257,7 @@ title: Harish Raghavendra - Staff Product Manager, GitHub Platform
                 <span>PostgreSQL</span>
                 <span>Solidity</span>
             </div>
-            <a href="https://grc-portal-production.up.railway.app" class="project-card__link" target="_blank" rel="noopener">View live</a>
+            <a href="https://grc-conductor.up.railway.app" class="project-card__link" target="_blank" rel="noopener">View live</a>
         </article>
 
         <article class="project-card">
