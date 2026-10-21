@@ -62,10 +62,10 @@
     <li><b>ViDA.AI, end-to-end agentic governance:</b> Built the platform first as an open-source, MIT-licensed project (GRC Conductor), then led its customization into Visa's internal GRC platform, automating the path from conversational intake to risk scoring, specialist review, and decision. Cut assessment turnaround 80%+ (multi-day to near real time) and unlocked multi-million-dollar revenue. Now carried forward into Visa's next-generation risk-agent tool chain.</li>
     <li><b>Multi-agent architecture:</b> 3-tier agent-to-agent pipeline of 20 skills, 6 command agents, and 4 workflows (low-risk, full review, escalated, third-party risk) on a signed message bus, with saga rollback and SLA tiers of 2 hours, 5 days, and 20 days.</li>
     <li><b>Thresholds &amp; low-risk automation:</b> Each skill passes a confidence score down the chain, and any score under 0.80 forces escalation. Auto-approval requires risk ≥75, confidence ≥0.90, and no DPIA/LIA, with fixed 0.85/0.88 confidence floors that policy settings can't lower. The LLM scores and explains; a deterministic engine decides. Low-risk cases auto-approve in under 2 hours.</li>
-    <li><b>Intake &amp; reviewer agents:</b> Conversational intake over MCP, gated on a combined template-coverage and LLM-rubric quality score before auto-submit, with AI coaching while users draft. Reviewer copilots pre-fill reviews, write privacy, data-use, and AI-governance notes, and estimate control ratings for residual risk. AI-suggested and human-edited fields are tracked separately as a feedback signal.</li>
+    <li><b>Intake &amp; reviewer agents:</b> Conversational intake through a Claude MCP integration (Claude Code and Claude Desktop), gated on a combined template-coverage and LLM-rubric quality score before auto-submit, with AI coaching while users draft. Reviewer copilots pre-fill reviews, write privacy, data-use, and AI-governance notes, and estimate control ratings for residual risk. AI-suggested and human-edited fields are tracked separately as a feedback signal.</li>
     <li><b>Grounding, quality &amp; cost controls:</b> Two-stage RAG (pgvector top-50, then cross-encoder rerank) scoped to policy domain and user role. Claim-level evidence with contradiction detection. Prompt-quality scoring (GEPA). Per-assessment token and cost budgets, circuit breakers, LLM caching, and model-alias routing with fallback across OpenAI, Azure, and Anthropic. Every agent run is audited with tokens, cost, and confidence.</li>
     <li><b>Regulatory automation:</b> Automated DPIA/LIA, EU AI Act risk classification, and bias assessment. Compliance matrix mapped to EU AI Act, NIST AI RMF, and ISO 42001 (37 articles). Drift detection triggers re-assessment.</li>
-    <li><b>Data &amp; AI Governance Deputy Lead:</b> Shaped Data Use Policy and Responsible AI guidance and reviewed high-risk use cases with Privacy, Competition, Affiliates, and IP legal teams. Contributed to AI inventions.</li>
+    <li><b>Data &amp; AI Governance Deputy Lead:</b> Shaped Data Use Policy and Responsible AI guidance and reviewed high-risk use cases with Privacy, Competition, Affiliates, and IP legal teams.</li>
   </ul>
   <div class="sub">Data platforms (2019–2024)</div>
   <ul>
@@ -73,7 +73,7 @@
     <li><b>Tusker, Visa's self-supported Hadoop 3.x distribution:</b> Drove vision through execution, growing the team from 3 to 80+ engineers across 5 scrum teams and saving $80M+ over 5 years. Presented and passed external audit with the Federal Reserve, FBA, and government agencies.</li>
     <li><b>Hadoop in-place upgrade:</b> Ran 20+ roadshows across all Visa tech divisions for a 2-year upgrade of 175+ data applications, 90+ clusters, and hundreds of PB.</li>
     <li><b>Parsec self-service platform:</b> Product owner for an agent-based, multi-tenant platform managing 12K+ servers through 1,500+ APIs. Onboarded 14 teams to hosted storage, queue, cluster, and governance services, cutting dev time from months to weeks. Personally contributed 400+ PRs.</li>
-    <li><b>NextGen Merchant Data Platform:</b> Authored the 3-year strategy and target architecture, adopted by multiple engineering teams, modeling Merchant–PayFac–Acquirer relationships across 130M+ merchant locations with GenAI/LLM entity resolution. Wrote baseline code for 15+ microservices. Led the data-quality vendor evaluation and the third-party data licensing (UN WIPO trademark database).</li>
+    <li><b>NextGen Merchant Data Platform:</b> Authored the 3-year strategy and target architecture, adopted by multiple engineering teams, modeling Merchant–PayFac–Acquirer relationships across 130M+ merchant locations with GenAI/LLM entity resolution. Wrote baseline code for 15+ microservices. Led the data-quality vendor evaluation and the third-party data licensing (UN WIPO trademark database). Contributed AI inventions from this work.</li>
     <li><b>Platform cost &amp; metering:</b> Led cluster cleanup recovering 10+ PB and 5M+ small files. Authored the Metering-as-a-Service PRD.</li>
   </ul>
 </div>
@@ -112,7 +112,7 @@
 
 <h2>Selected Builds</h2>
 <ul class="builds">
-  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the open-source foundation of ViDA.AI, adding an MCP server for Claude Code and Claude Desktop and an on-chain audit registry (Polygon). 300+ APIs and 8,800+ automated tests. TypeScript, React, PostgreSQL/pgvector.</li>
+  <li><b>GRC Conductor</b> (MIT-licensed, grc-conductor.up.railway.app): the open-source foundation of ViDA.AI, plus an on-chain audit registry (Polygon) built outside Visa. 300+ APIs and 8,800+ automated tests. TypeScript, React, PostgreSQL/pgvector.</li>
   <li><b>NammaSeva</b>: multi-tenant hyperlocal services marketplace with voice and AI-assisted intake (React Native, NestJS, PostGIS).</li>
 </ul>
 
