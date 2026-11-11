@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { normalizePath } from '../routing'
 import { ColorSchemeToggle } from './ColorSchemeToggle'
 
+/** Pages that live under Interests, so the Interests item stays highlighted on them. */
+const interestPages = ['/earth/', '/glass/']
+
 const navItems = [
   ['About', '/', 'fas fa-user'],
   ['Skills', '/skills/', 'fas fa-code'],
@@ -11,7 +14,6 @@ const navItems = [
   ['Certifications', '/certifications/', 'fas fa-certificate'],
   ['Learning', '/learning/', 'fas fa-graduation-cap'],
   ['Years', '/years/', 'fas fa-calendar-alt'],
-  ['Earth', '/earth/', 'fas fa-globe-americas'],
   ['Contact', '/#contact', 'fas fa-envelope'],
 ] as const
 
@@ -33,7 +35,9 @@ export function SiteNavigation({ currentPath }: { currentPath: string }) {
               ? false
               : itemPath === '/'
                 ? currentPath === '/'
-                : currentPath === itemPath || currentPath.startsWith(itemPath)
+                : currentPath === itemPath ||
+                  currentPath.startsWith(itemPath) ||
+                  (itemPath === '/interests/' && interestPages.includes(currentPath))
             return (
               <a key={label} href={href} className={active ? 'active' : ''} onClick={() => setOpen(false)}>
                 <i className={icon} aria-hidden="true" /> {label}

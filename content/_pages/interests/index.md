@@ -49,6 +49,18 @@ permalink: /interests/
       <p class="article-card__lede">Grogu, the Razor Crest, an N-1 Starfighter, and a run of Marvel builds with my kids. Currently building a Bugatti.</p>
       <span class="article-card__read">Read more <i class="fas fa-arrow-right"></i></span>
     </a>
+    <a class="article-card" href="{{ '/earth/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-globe-americas"></i> Interactive History</span>
+      <h3 class="article-card__title">Earth, and everyone on it</h3>
+      <p class="article-card__lede">A living 3D globe: 4.5 billion years of drifting continents, the first humans crossing every ocean, and the eight ages from flint to frontier AI.</p>
+      <span class="article-card__read">Explore the globe <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a class="article-card" href="{{ '/glass/' | relative_url }}">
+      <span class="article-card__tag"><i class="fas fa-gem"></i> 3D Rendering</span>
+      <h3 class="article-card__title">Glass Studio</h3>
+      <p class="article-card__lede">Type any name, in English, Kannada, Hindi or other Indian scripts, and turn it into glass, crystal or diamond. Pick the light and backdrop, then ray-trace a still, the way Maya did 30 years ago.</p>
+      <span class="article-card__read">Open the studio <i class="fas fa-arrow-right"></i></span>
+    </a>
   </div>
 </section>
 
