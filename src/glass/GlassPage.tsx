@@ -218,6 +218,11 @@ export function GlassPage() {
           Type any name and it's turned into beveled, refracting glass, or faceted crystal and diamond. Drag to turn it, choose the tint and the light, then press{' '}
           <strong>Render</strong> for a ray-traced still, the way Maya used to let you.
         </p>
+        <p className="glass-hero__story">
+          Why glass? I first saw 3D glass text in the 1990s, in high school, when a senior who was into 3D graphics showed me
+          his Visual Basic code and a Maya library. Reading through that code is how I learned what ray tracing is and how
+          graphics really work. This page is a small tribute to that, rebuilt for the browser.
+        </p>
       </header>
 
       <div className="glass-layout">

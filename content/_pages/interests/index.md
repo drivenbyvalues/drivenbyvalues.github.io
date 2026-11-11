@@ -58,7 +58,7 @@ permalink: /interests/
     <a class="article-card" href="{{ '/glass/' | relative_url }}">
       <span class="article-card__tag"><i class="fas fa-gem"></i> 3D Rendering</span>
       <h3 class="article-card__title">Glass Studio</h3>
-      <p class="article-card__lede">Type any name, in English, Kannada, Hindi or other Indian scripts, and turn it into glass, crystal or diamond. Pick the light and backdrop, then ray-trace a still, the way Maya did 30 years ago.</p>
+      <p class="article-card__lede">Type any name, in English, Kannada, Hindi or other Indian scripts, and turn it into glass, crystal or diamond. Pick the light and backdrop, then ray-trace a still. A tribute to the Visual Basic and Maya code a high-school senior showed me in the 1990s, which is how I first learned ray tracing.</p>
       <span class="article-card__read">Open the studio <i class="fas fa-arrow-right"></i></span>
     </a>
   </div>
