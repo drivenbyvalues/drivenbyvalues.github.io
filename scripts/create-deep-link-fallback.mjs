@@ -4,7 +4,7 @@ import path from 'node:path'
 const entrypoint = new URL('../dist/index.html', import.meta.url)
 const pages = JSON.parse(await readFile(new URL('../src/generated/content.json', import.meta.url), 'utf8'))
 // Routes rendered by React components rather than Markdown content.
-const appRoutes = ['/earth/']
+const appRoutes = ['/earth/', '/glass/']
 
 await copyFile(entrypoint, new URL('../dist/404.html', import.meta.url))
 
